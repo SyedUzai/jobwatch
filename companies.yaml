@@ -32,6 +32,8 @@ filters:
     - university graduate
     - early career
     - NCG
+    - intern
+    - internship
   exclude:
     - senior
     - sr
@@ -43,8 +45,6 @@ filters:
     - manager
     - head of
     - lead
-    - intern
-    - internship
     - co-op
     - marketing
     - sales
@@ -109,11 +109,10 @@ alert_after_failures: 3
 
 sources:
   # ── GPU / CPU / SoC vendors ──────────────────────────────────────────────
-  - name: Nvidia                       # [check]
-    type: workday
-    host: nvidia.wd5.myworkdayjobs.com
-    tenant: nvidia
-    site: NVIDIAExternalCareerSite
+  - name: Nvidia
+    type: eightfold
+    host: jobs.nvidia.com
+    domain: nvidia.com
 
   - name: AMD                          # [check]
     type: browser
