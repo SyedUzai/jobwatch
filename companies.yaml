@@ -1,0 +1,246 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# jobwatch config. Edit freely; run `python jobwatch.py --check` after changes.
+#
+# Source types:
+#   greenhouse / ashby / lever  → whole public job board (fast, reliable)
+#   workday                     → Workday careers API, searched with search_queries
+#   amazon                      → amazon.jobs search API (covers Annapurna Labs)
+#   browser                     → opens the careers search page in headless Chrome and
+#                                 collects job links matching `link` (for custom sites)
+#
+# Status notes: [verified] = confirmed working Nov 2026. [check] = best-known setup,
+# confirm with --check on first run and fix if it fails.
+# ─────────────────────────────────────────────────────────────────────────────
+
+filters:
+  # A job alerts only if its TITLE contains at least one `include` term
+  # (whole-word, case-insensitive) and none of the `exclude` terms.
+  include:
+    - post-silicon
+    - post silicon
+    - silicon validation
+    - silicon performance
+    - performance
+    - characterization
+    - bring-up
+    - bringup
+    - validation engineer
+    - new grad
+    - new college grad
+    - new college graduate
+    - college graduate
+    - university graduate
+    - early career
+    - NCG
+  exclude:
+    - senior
+    - sr
+    - staff
+    - principal
+    - distinguished
+    - fellow
+    - director
+    - manager
+    - head of
+    - lead
+    - intern
+    - internship
+    - co-op
+    - marketing
+    - sales
+    - recruiter
+    - finance
+    - legal
+  # Location must contain one of these (whole-word). Jobs with no location shown are kept.
+  # Delete the whole list to allow any location.
+  locations:
+    - United States
+    - USA
+    - US
+    - Canada
+    - Ontario
+    - Toronto
+    - Markham
+    - Remote
+    - California
+    - Texas
+    - Washington
+    - Oregon
+    - Massachusetts
+    - CA
+    - TX
+    - WA
+    - OR
+    - MA
+    - Santa Clara
+    - San Jose
+    - Sunnyvale
+    - Mountain View
+    - Cupertino
+    - Palo Alto
+    - Menlo Park
+    - Milpitas
+    - San Francisco
+    - San Diego
+    - Austin
+    - Seattle
+    - Redmond
+    - Bellevue
+    - Portland
+    - Hillsboro
+    - Boston
+
+# Search terms used by workday / amazon sources (unless a source sets its own `queries`).
+search_queries:
+  - post silicon
+  - silicon validation
+  - silicon performance
+  - performance architect
+  - new college grad
+
+# Search terms used by browser sources. Keep this short — each term is one page load per company.
+browser_queries:
+  - post silicon
+  - silicon validation
+  - silicon performance
+
+# Send a warning push if a source fails this many runs in a row.
+alert_after_failures: 3
+
+sources:
+  # ── GPU / CPU / SoC vendors ──────────────────────────────────────────────
+  - name: Nvidia                       # [check]
+    type: workday
+    host: nvidia.wd5.myworkdayjobs.com
+    tenant: nvidia
+    site: NVIDIAExternalCareerSite
+
+  - name: AMD                          # [check]
+    type: browser
+    url: "https://careers.amd.com/careers-home/jobs?keywords={query}&sortBy=posted_date&descending=true"
+    link: "/jobs/\\d+"
+
+  - name: Qualcomm                     # [check]
+    type: browser
+    url: "https://careers.qualcomm.com/careers?query={query}"
+    link: "/job/\\d+"
+
+  - name: Apple                        # [check]
+    type: browser
+    url: "https://jobs.apple.com/en-us/search?search={query}&sort=newest"
+    link: "/details/[\\w-]+"
+
+  - name: Intel                        # [check]
+    type: workday
+    host: intel.wd1.myworkdayjobs.com
+    tenant: intel
+    site: External
+
+  - name: Arm                          # [check]
+    type: browser
+    url: "https://careers.arm.com/search-jobs/{query}"
+    link: "/job/"
+
+  - name: Samsung                      # [check] Samsung Semiconductor US
+    type: workday
+    host: sec.wd3.myworkdayjobs.com
+    tenant: sec
+    site: Samsung_Careers
+
+  - name: MediaTek                     # turned off: little US hiring for this role
+    enabled: false
+    type: browser
+    url: "https://careers.mediatek.com/"
+    link: "job"
+
+  # ── Hyperscaler in-house silicon ─────────────────────────────────────────
+  - name: Google                       # [check]
+    type: browser
+    url: "https://www.google.com/about/careers/applications/jobs/results/?q={query}"
+    link: "jobs/results/\\d+"
+
+  - name: Amazon / Annapurna           # [verified]
+    type: amazon
+    queries:
+      - post-silicon
+      - silicon validation
+      - annapurna performance
+      - trainium
+
+  - name: Meta                         # [check]
+    type: browser
+    url: "https://www.metacareers.com/jobsearch?q={query}"
+    link: "(job_details|jobs)/\\d+"
+
+  - name: Microsoft                    # [check]
+    type: browser
+    url: "https://apply.careers.microsoft.com/careers?query={query}"
+    link: "job/\\d+"
+
+  - name: OpenAI                       # [verified]
+    type: ashby
+    board: openai
+
+  # ── Custom ASIC houses ───────────────────────────────────────────────────
+  - name: Broadcom                     # [check]
+    type: workday
+    host: broadcom.wd1.myworkdayjobs.com
+    tenant: broadcom
+    site: External_Career
+
+  - name: Marvell                      # [check]
+    type: workday
+    host: marvell.wd1.myworkdayjobs.com
+    tenant: marvell
+    site: MarvellCareers
+
+  # ── AI accelerator startups ──────────────────────────────────────────────
+  - name: Tenstorrent                  # [verified]
+    type: greenhouse
+    board: tenstorrent
+
+  - name: Etched                       # [verified]
+    type: ashby
+    board: etched
+
+  - name: Groq                         # [verified]
+    type: greenhouse
+    board: groq
+
+  - name: Cerebras                     # [check]
+    type: browser
+    url: "https://www.cerebras.ai/open-positions"
+    link: "(greenhouse\\.io|lever\\.co|ashbyhq\\.com|/open-positions/.+|/job)"
+
+  - name: SambaNova                    # [check]
+    type: browser
+    url: "https://sambanova.ai/careers"
+    link: "(greenhouse\\.io|lever\\.co|ashbyhq\\.com|workable\\.com|/careers/.+|/jobs?/)"
+
+  - name: MatX                         # [verified]
+    type: ashby
+    board: matx
+
+  - name: d-Matrix                     # [check]
+    type: browser
+    url: "https://www.d-matrix.ai/careers/"
+    link: "(greenhouse\\.io|lever\\.co|ashbyhq\\.com|workable\\.com|myworkdayjobs|/careers/.+|/jobs?/)"
+
+  - name: Lightmatter                  # [verified]
+    type: greenhouse
+    board: lightmatter
+
+  # ── Automotive / edge ────────────────────────────────────────────────────
+  - name: Tesla                        # [check] heavily bot-protected; may fail
+    type: browser
+    url: "https://www.tesla.com/careers/search/?query={query}&site=US"
+    link: "/careers/search/job/"
+
+  - name: Waymo                        # [verified]
+    type: greenhouse
+    board: waymo
+
+  - name: Rivian                       # [check]
+    type: browser
+    url: "https://careers.rivian.com/careers-home/jobs?keywords={query}"
+    link: "/jobs/\\d+"
