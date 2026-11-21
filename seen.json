@@ -1,11 +1,11 @@
 {
  "failures": {
-  "Broadcom": 2,
-  "Groq": 2,
-  "Intel": 2,
-  "Marvell": 2,
-  "Samsung": 2,
-  "Tesla": 2
+  "Broadcom": 3,
+  "Groq": 3,
+  "Intel": 3,
+  "Marvell": 3,
+  "Samsung": 3,
+  "Tesla": 3
  },
  "seen": {
   "AMD": [
@@ -760,6 +760,8 @@
    "https://www.metacareers.com/profile/job_details/1389772523328596",
    "https://www.metacareers.com/profile/job_details/1399091538947023",
    "https://www.metacareers.com/profile/job_details/1469752631642156",
+   "https://www.metacareers.com/profile/job_details/1477723764162264",
+   "https://www.metacareers.com/profile/job_details/1489379243208886",
    "https://www.metacareers.com/profile/job_details/1508340500461438",
    "https://www.metacareers.com/profile/job_details/1513715310594346",
    "https://www.metacareers.com/profile/job_details/1515485239779239",
@@ -841,6 +843,7 @@
    "893397430985",
    "893397442363",
    "893397443926",
+   "893397444115",
    "893397711585",
    "893397713471",
    "893397713550",
@@ -848,6 +851,7 @@
    "893397742571",
    "893397758782",
    "893398107718",
+   "893398545197",
    "893398841610",
    "893398847899",
    "893398849139",
