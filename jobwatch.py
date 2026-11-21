@@ -181,6 +181,56 @@ def fetch_amazon(src: dict, cfg: dict) -> list[Job]:
     return list(jobs.values())
 
 
+def fetch_eightfold(src: dict, cfg: dict) -> list[Job]:
+    """Eightfold career sites (Nvidia, Qualcomm, Microsoft). Tries Eightfold's JSON APIs,
+    and falls back to loading the search page in the browser if both are blocked."""
+    host, domain = src["host"], src["domain"]
+    qs = queries_for(src, cfg, "search_queries")
+    jobs: dict[str, Job] = {}
+    errors = []
+
+    def add(p: dict) -> None:
+        jid = str(p.get("id") or p.get("positionId") or "")
+        if not jid:
+            return
+        locs = p.get("locations") or p.get("standardizedLocations") or p.get("location") or ""
+        if isinstance(locs, list):
+            locs = " | ".join(str(l.get("name", l) if isinstance(l, dict) else l) for l in locs[:3])
+        url = p.get("canonicalPositionUrl") or p.get("positionUrl") or f"/careers/job/{jid}"
+        if url.startswith("/"):
+            url = f"https://{host}{url}"
+        jobs[jid] = Job(jid, p.get("name") or p.get("title") or "", url, str(locs))
+
+    endpoints = [
+        (f"https://{host}/api/pcsx/search",
+         lambda q: {"domain": domain, "query": q, "location": "", "start": 0, "sort_by": "timestamp"},
+         lambda d: (d.get("data") or {}).get("positions")),
+        (f"https://{host}/api/apply/v2/jobs",
+         lambda q: {"domain": domain, "query": q, "start": 0, "num": 50, "sort_by": "timestamp"},
+         lambda d: d.get("positions")),
+    ]
+    for url, params, extract in endpoints:
+        try:
+            for q in qs:
+                positions = extract(http_get(url, params=params(q)).json())
+                if positions is None:
+                    raise ValueError("unexpected response shape")
+                for p in positions:
+                    add(p)
+            return list(jobs.values())
+        except Exception as e:
+            errors.append(f"{url.rsplit('/api/', 1)[1]}: {type(e).__name__}")
+            jobs.clear()
+
+    # Both APIs failed — render the real search page instead.
+    try:
+        return fetch_browser({"url": f"https://{host}/careers?query={{query}}&sort_by=timestamp",
+                              "link": r"/careers/job/\d+", "wait_ms": src.get("wait_ms", 7000)}, cfg)
+    except Exception as e:
+        errors.append(f"browser: {e}")
+        raise RuntimeError("; ".join(errors))
+
+
 class Browser:
     """Lazily started headless Chromium shared by all 'browser' sources in a run."""
     _pw = _browser = None
@@ -250,6 +300,7 @@ ADAPTERS = {
     "lever": fetch_lever,
     "workday": fetch_workday,
     "amazon": fetch_amazon,
+    "eightfold": fetch_eightfold,
     "browser": fetch_browser,
 }
 
