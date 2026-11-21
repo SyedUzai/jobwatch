@@ -3,7 +3,12 @@ name: jobwatch
 on:
   schedule:
     - cron: "*/20 * * * *"   # every 20 min (GitHub may delay runs a few minutes)
-  workflow_dispatch: {}      # lets you run it manually from the Actions tab
+  workflow_dispatch:         # lets you run it manually from the Actions tab
+    inputs:
+      test_alert:
+        description: "Just send a test notification to my phone/email"
+        type: boolean
+        default: false
 
 permissions:
   contents: write            # needed to save seen.json back to the repo
@@ -42,7 +47,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
-        run: python jobwatch.py
+        run: python jobwatch.py ${{ inputs.test_alert && '--test-alert' || '' }}
 
       - name: Save state
         if: always()
