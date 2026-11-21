@@ -4,6 +4,9 @@
 # Source types:
 #   greenhouse / ashby / lever  → whole public job board (fast, reliable)
 #   workday                     → Workday careers API, searched with search_queries
+#                                 (paced + cookies to avoid 429s; falls back to the browser)
+#   eightfold                   → Eightfold career sites (Nvidia)
+#   tesla                       → Tesla's careers feed
 #   amazon                      → amazon.jobs search API (covers Annapurna Labs)
 #   browser                     → opens the careers search page in headless Chrome and
 #                                 collects job links matching `link` (for custom sites)
@@ -202,9 +205,14 @@ sources:
     type: ashby
     board: etched
 
-  - name: Groq                         # [verified]
+  - name: Groq                         # moved its job board from Greenhouse to Gem
+    type: browser
+    url: "https://jobs.gem.com/groq"
+    link: "jobs\\.gem\\.com/groq/[\\w-]+"
+
+  - name: xAI                          # separate company from Groq (makes Grok)
     type: greenhouse
-    board: groq
+    board: xai
 
   - name: Cerebras                     # [check]
     type: browser
@@ -230,10 +238,9 @@ sources:
     board: lightmatter
 
   # ── Automotive / edge ────────────────────────────────────────────────────
-  - name: Tesla                        # [check] heavily bot-protected; may fail
-    type: browser
-    url: "https://www.tesla.com/careers/search/?query={query}&site=US"
-    link: "/careers/search/job/"
+  - name: Tesla                        # heavily bot-protected; may still be blocked from GitHub
+    type: tesla
+    url: "https://www.tesla.com/careers/search/?site=US"
 
   - name: Waymo                        # [verified]
     type: greenhouse

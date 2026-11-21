@@ -58,33 +58,43 @@ def load_dotenv(path: Path) -> None:
         os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
 
-def http_get(url: str, **kw) -> requests.Response:
+RATE_LIMIT_WAITS = [5, 15, 30]  # seconds to back off after a 429 "Too Many Requests"
+
+
+def http_request(method: str, url: str, session: requests.Session | None = None, **kw) -> requests.Response:
+    """GET/POST with one retry on network errors and polite back-off on 429/503."""
     kw.setdefault("timeout", TIMEOUT)
     kw.setdefault("headers", {"User-Agent": UA, "Accept": "application/json"})
-    for attempt in range(2):
+    send = (session or requests).request
+    waits = list(RATE_LIMIT_WAITS)
+    net_retries = 1
+    while True:
         try:
-            r = requests.get(url, **kw)
-            r.raise_for_status()
-            return r
+            r = send(method, url, **kw)
         except requests.RequestException:
-            if attempt == 1:
+            if net_retries <= 0:
                 raise
+            net_retries -= 1
             time.sleep(3)
-    raise RuntimeError("unreachable")
+            continue
+        if r.status_code in (429, 503) and waits:
+            ra = r.headers.get("Retry-After", "")
+            wait = int(ra) if ra.isdigit() and int(ra) <= 60 else waits[0]
+            waits.pop(0)
+            time.sleep(wait)
+            continue
+        r.raise_for_status()
+        return r
 
 
-def http_post(url: str, payload: dict) -> requests.Response:
-    headers = {"User-Agent": UA, "Accept": "application/json", "Content-Type": "application/json"}
-    for attempt in range(2):
-        try:
-            r = requests.post(url, json=payload, headers=headers, timeout=TIMEOUT)
-            r.raise_for_status()
-            return r
-        except requests.RequestException:
-            if attempt == 1:
-                raise
-            time.sleep(3)
-    raise RuntimeError("unreachable")
+def http_get(url: str, **kw) -> requests.Response:
+    return http_request("GET", url, **kw)
+
+
+def http_post(url: str, payload: dict, **kw) -> requests.Response:
+    kw.setdefault("headers", {"User-Agent": UA, "Accept": "application/json",
+                              "Content-Type": "application/json"})
+    return http_request("POST", url, json=payload, **kw)
 
 
 def word_regex(terms: list[str]) -> re.Pattern | None:
@@ -148,24 +158,107 @@ def fetch_lever(src: dict, cfg: dict) -> list[Job]:
 
 
 def fetch_workday(src: dict, cfg: dict) -> list[Job]:
+    """Workday careers API, made to look like a normal visit (cookies, Origin/Referer) and
+    paced to avoid 429s. If Workday still rate-limits us, render the search page instead."""
     host, tenant, site = src["host"], src["tenant"], src["site"]
+    home = f"https://{host}/en-US/{site}"
     api = f"https://{host}/wday/cxs/{tenant}/{site}/jobs"
-    pages = int(src.get("pages", 2))
+    pages = int(src.get("pages", 1))
+    pause = float(src.get("pause_s", 2.5))
+    qs = queries_for(src, cfg, "search_queries")
     jobs: dict[str, Job] = {}
-    for q in queries_for(src, cfg, "search_queries"):
-        for p in range(pages):
-            data = http_post(api, {"appliedFacets": {}, "limit": 20, "offset": p * 20,
-                                   "searchText": q}).json()
-            posts = data.get("jobPostings", [])
-            for j in posts:
-                path = j.get("externalPath", "")
-                if not path:
-                    continue
-                jobs[path] = Job(path, j.get("title", ""),
-                                 f"https://{host}/en-US/{site}{path}", j.get("locationsText", ""))
-            if len(posts) < 20:
-                break
+    try:
+        s = requests.Session()
+        base_headers = {"User-Agent": UA, "Accept-Language": "en-US,en;q=0.9"}
+        http_get(home, session=s, headers={**base_headers, "Accept": "text/html"})  # sets cookies
+        api_headers = {**base_headers, "Accept": "application/json", "Content-Type": "application/json",
+                       "Origin": f"https://{host}", "Referer": home}
+        for q in qs:
+            for p in range(pages):
+                time.sleep(pause)
+                data = http_post(api, {"appliedFacets": {}, "limit": 20, "offset": p * 20,
+                                       "searchText": q}, session=s, headers=api_headers).json()
+                posts = data.get("jobPostings", [])
+                for j in posts:
+                    path = j.get("externalPath", "")
+                    if path:
+                        jobs[path] = Job(path, j.get("title", ""), home + path, j.get("locationsText", ""))
+                if len(posts) < 20:
+                    break
+        return list(jobs.values())
+    except requests.HTTPError as e:
+        if e.response is None or e.response.status_code not in (401, 403, 429):
+            raise
+        api_err = f"API {e.response.status_code}"
+
+    # Fallback: let a real browser load the search page (it calls the same API with full browser cookies).
+    try:
+        found = fetch_browser({"url": f"{home}?q={{query}}", "link": r"/job/", "wait_ms": 8000},
+                              {"browser_queries": qs[:3]})
+    except Exception as e:
+        raise RuntimeError(f"{api_err}; browser fallback: {e}")
+    for j in found:  # use the same ID format as the API so switching methods never re-alerts
+        m = re.search(r"(/job/[^?#]+)", j.url)
+        if m:
+            jobs[m.group(1)] = Job(m.group(1), j.title, j.url, j.location)
     return list(jobs.values())
+
+
+def fetch_tesla(src: dict, cfg: dict) -> list[Job]:
+    """Tesla's careers site loads every listing from one JSON feed. It's bot-protected, so
+    try it directly, then from inside a real browser page, then by scraping the rendered page."""
+    feed = "https://www.tesla.com/cua-api/apps/careers/state"
+    search = src.get("url", "https://www.tesla.com/careers/search/?site=US")
+
+    def parse(data: dict) -> list[Job]:
+        lookup = data.get("lookup") or {}
+        locs = lookup.get("locations") or {}
+        out = []
+        for j in data.get("listings") or []:
+            jid = str(j.get("id") or "")
+            title = j.get("t") or j.get("title") or ""
+            if not jid or not title:
+                continue
+            loc = locs.get(str(j.get("l")), "") if isinstance(locs, dict) else ""
+            if isinstance(loc, dict):
+                loc = loc.get("name") or loc.get("label") or ""
+            slug = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
+            out.append(Job(jid, title, f"https://www.tesla.com/careers/search/job/{slug}-{jid}", str(loc)))
+        if not out:
+            raise ValueError("feed had no listings")
+        return out
+
+    errors = []
+    try:
+        return parse(http_get(feed, headers={"User-Agent": UA, "Accept": "application/json",
+                                             "Accept-Language": "en-US,en;q=0.9",
+                                             "Referer": search}).json())
+    except Exception as e:
+        errors.append(f"feed: {type(e).__name__}")
+
+    page = Browser.page()
+    try:
+        page.goto(search, wait_until="domcontentloaded", timeout=60000)
+        page.wait_for_timeout(8000)
+        try:
+            data = page.evaluate("() => fetch('/cua-api/apps/careers/state', "
+                                 "{headers: {accept: 'application/json'}}).then(r => r.json())")
+            return parse(data)
+        except Exception as e:
+            errors.append(f"in-page feed: {type(e).__name__}")
+        links = page.eval_on_selector_all(
+            "a[href*='/careers/search/job/']", "els => els.map(e => [e.href, e.innerText || ''])")
+    finally:
+        page.context.close()
+    out = {}
+    for href, text in links:
+        lines = [l.strip() for l in text.splitlines() if l.strip()]
+        out[href] = Job(href.rstrip("/").rsplit("-", 1)[-1] if re.search(r"-\d+/?$", href) else href,
+                        lines[0] if lines else "", href, " · ".join(lines[1:3]))
+    if not out:
+        errors.append("page: 0 job links (blocked by Tesla's bot protection)")
+        raise RuntimeError("; ".join(errors))
+    return list(out.values())
 
 
 def fetch_amazon(src: dict, cfg: dict) -> list[Job]:
@@ -301,6 +394,7 @@ ADAPTERS = {
     "workday": fetch_workday,
     "amazon": fetch_amazon,
     "eightfold": fetch_eightfold,
+    "tesla": fetch_tesla,
     "browser": fetch_browser,
 }
 
