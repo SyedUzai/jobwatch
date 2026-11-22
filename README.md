@@ -102,3 +102,36 @@ Everything lives in `companies.yaml`:
   ```
 - To mute a company without deleting it, add `enabled: false`.
 - To reset and re-record everything, delete `seen.json`.
+
+---
+
+## 5. Reliable 15-minute schedule (cron-job.org)
+
+GitHub's built-in schedule is best-effort. On free accounts, frequent schedules often get
+delayed by hours or skipped. The workflow keeps an hourly GitHub schedule as a backup, and a
+free outside service pokes it every 15 minutes:
+
+1. **GitHub token:** your profile picture → Settings → Developer settings → Personal access
+   tokens → **Fine-grained tokens** → Generate new token.
+   - Repository access: *Only select repositories* → `jobwatch`.
+   - Permissions → Repository → **Actions: Read and write**.
+   - Expiration: 1 year. Copy the token.
+2. **cron-job.org:** sign up (free) → **Create cronjob**.
+   - URL: `https://api.github.com/repos/YOUR-USERNAME/jobwatch/actions/workflows/jobwatch.yml/dispatches`
+   - Schedule: every 15 minutes.
+   - Advanced → Request method **POST**. Add these headers:
+     - `Authorization: Bearer YOUR_TOKEN`
+     - `Accept: application/vnd.github+json`
+     - `X-GitHub-Api-Version: 2022-11-28`
+   - Request body: `{"ref":"main"}`
+3. Click **Test run**. You should get status **204**, and a new run appears in the Actions tab.
+
+When the token expires (1 year), make a new one and paste it into the cron-job.org header.
+
+## 6. Newest postings first
+
+Search-based sites only show the top results for each search, so where a site can sort by date,
+the watcher asks for newest first: Amazon, Nvidia, AMD, Apple, Google, Qualcomm, Microsoft and
+Rivian. For Workday sites, it also reads the 60 newest postings before the keyword searches.
+Alerts in each run are ordered newest first, and each one says when the job was posted.
+`max_age_days` in `companies.yaml` can skip older listings, but it's off (0) by default.
