@@ -1,6 +1,6 @@
 {
  "failures": {
-  "Tesla": 17
+  "Tesla": 18
  },
  "seen": {
   "AMD": [
@@ -320,6 +320,7 @@
    "/job/IND-Pune-EON-Kharadi-Infrastructure/Technical-Support-Engineer_R027245",
    "/job/IND-Pune-EON-Kharadi-Infrastructure/Technical-Support-Engineer_R027713",
    "/job/IND-Pune-Panchshil/Software-Engineer_R027892",
+   "/job/ISR-Tel-Aviv-University/DFT-Engineer_R026695-5",
    "/job/ISR-Tel-Aviv-University/R-D-Software-Development_R027878-5",
    "/job/ISR-Tel-Aviv-University/Verification-Engineer_R027910-4",
    "/job/Malaysia-Jitra-Remote-Location/MFG-OPS-SUPOORT-1_R027885",
@@ -849,6 +850,7 @@
    "/job/Ireland-Leixlip/Senior-Verification-Engineer_JR0287844",
    "/job/Ireland-Leixlip/SoC-Compute-Memory-Subsystem-Architect_JR0284570",
    "/job/Israel-Haifa/Senior-Post-Silicon-CPU-Debug-Engineer_JR0284348",
+   "/job/Israel-Petah-Tikva/Logic-Design-Team-Lead-Manager_JR0289541",
    "/job/Japan-Tokyo/Equipment-Development-Engineer_JR0289360",
    "/job/Japan-Tokyo/Staff-EMIB-T-Substrate-Yield-Engineer_JR0287731-1",
    "/job/Malaysia-Kulim/Semiconductor-Manufacturing-Engineer_JR0288754",
@@ -1026,6 +1028,7 @@
    "/job/Bangalore/Staff--Engineer--L1--L2--L3-Testing--NOS-SDK-testing--Python-Automation-_2602243",
    "/job/Bangalore/Staff-SRAM-Layout-Engineer_2605382",
    "/job/Beijing-Shi/Director--Government-Affairs---China_2605027",
+   "/job/Burlington-VT/Staff--SRAM-Software-Engineer_2605370",
    "/job/CA-ON---Ottawa/Principal-Analog-Mixed-Signal-Design-Engineer---Optical_2604838",
    "/job/Ho-Chi-Minh/Senior-Engineer--Physical-Design_2605435",
    "/job/Ho-Chi-Minh/Senior-Staff-Engineer--Physical-Design_2605427",
@@ -2325,20 +2328,40 @@
    "https://sambanova.ai/company/careers/job-openings"
   ],
   "Samsung": [
+   "/job/12100-Samsung-Blvd-Austin-TX-USA/CVD-Equipment-Technician_R118247",
    "/job/12100-Samsung-Blvd-Austin-TX-USA/NPI-Engineer_R121501",
+   "/job/12100-Samsung-Blvd-Austin-TX-USA/PCS-Equipment-Shift-Engineer_R118343-2",
    "/job/12100-Samsung-Blvd-Austin-TX-USA/Planar-Nodes--Experienced-Process-Integration-Engineer_R120249",
    "/job/12100-Samsung-Blvd-Austin-TX-USA/Senior-Engineer-Lead---Facilities-Services_R119706",
    "/job/12100-Samsung-Blvd-Austin-TX-USA/Senior-Process-Integration-Engineer_R122045",
    "/job/12100-Samsung-Blvd-Austin-TX-USA/Staff-Foundry-Product-Engineer_R122008",
+   "/job/1530-FM-973-Taylor-TX-USA/Government-Relations-Strategist_R122373",
+   "/job/1530-FM-973-Taylor-TX-USA/Manufacturing-Operations-Equipment-Engineer_R121498",
    "/job/1530-FM-973-Taylor-TX-USA/Senior-Network-Engineer--Section-Leader-_R114014",
    "/job/1530-FM-973-Taylor-TX-USA/Senior-Network-Engineer_R114462",
+   "/job/200-Connell-Drive-Berkeley-Heights-NJ-USA/Sr-Manager--Technical-Sales---OSS-NMS--Intelligent-RAN--RIC---Autonomous-Networks_R122372",
+   "/job/3245-146th-Place-SE-Bellevue-WA-USA/Professional----Sales-Administration_R122006-1",
+   "/job/645-Clyde-Avenue-Mountain-View-CA-USA/Head-of-Strategy--Digital-Health_R122381",
+   "/job/6555-Excellence-Way-Plano-TX-USA/Product-Management-Tools-and-Automation-Intern_R122022",
+   "/job/6555-Excellence-Way-Plano-TX-USA/Product-Support-Senior-Engineer_R122001",
+   "/job/6555-Excellence-Way-Plano-TX-USA/Senior-Manager--Demand---Promotional-Planning_R122376",
+   "/job/6555-Excellence-Way-Plano-TX-USA/Software-Developer-Engineer_R122139",
+   "/job/6625-Excellence-Way-Plano-TX-USA/Manager--Data-Analytics_R121650",
+   "/job/Costa-del-Este-Panama-City-Panama/B2B-Sales-Management-Manager---Samsung-Electronics_R121297",
    "/job/Phoenix-Building-Bangalore-India/HW-Verification-Engineering-Lead_R112156",
    "/job/RTL-Design-Specialist_R121197",
    "/job/SSIR-Goldstone-Bangalore-India/Analog-Circuit-Design-Lead-Engineer-HSI_R118176",
    "/job/SSIR-Goldstone-Bangalore-India/DRAM-Senior-Security-Architect_R116885",
    "/job/SSIR-Goldstone-Bangalore-India/IP-RTL-Design-Engineer_R117218",
    "/job/SSIR-Goldstone-Bangalore-India/Linux-BSP-Engineer_R114954",
-   "/job/SSIR-Goldstone-Bangalore-India/SOC-Design-Verification-Engineer_R115109"
+   "/job/SSIR-Goldstone-Bangalore-India/SOC-Design-Verification-Engineer_R115109",
+   "/job/Samsung-House-2000-Hillswood-Drive-Chertsey-United-Kingdom/AI-Technical-Solutions-Manager_R122197",
+   "/job/Samsung-House-2000-Hillswood-Drive-Chertsey-United-Kingdom/Finance-Verification-Analyst_R122194",
+   "/job/Samsung-House-2000-Hillswood-Drive-Chertsey-United-Kingdom/Head-of-End-User-Sales_R122360-1",
+   "/job/Samsung-House-2000-Hillswood-Drive-Chertsey-United-Kingdom/Head-of-Product_R122359-1",
+   "/job/Samsung-Space-Eschborn-Germany/Programmatic-Media-Manager--m-w-d-_R122383",
+   "/job/Samsung-Space-Eschborn-Germany/Senior-Paid-Social-Media-Manager--m-w-d-_R122388",
+   "/job/Science-Hub-Tower-4-Manila-Philippines/Product-Manager_R116409"
   ],
   "Tenstorrent": [
    "4118635007",
