@@ -1,6 +1,6 @@
 {
  "failures": {
-  "Tesla": 23
+  "Tesla": 24
  },
  "seen": {
   "AMD": [
@@ -243,6 +243,7 @@
    "https://jobs.apple.com/en-us/details/200314117/in-specialist-full-time-and-part-time/locationPicker",
    "https://jobs.apple.com/en-us/details/200314117/in-specialist-full-time-and-part-time?team=APPST",
    "https://jobs.apple.com/en-us/details/200685463-0836/aiml-quality-engineering-manager-responsible-ai-and-safety?team=MLAI",
+   "https://jobs.apple.com/en-us/details/200689632-3337/senior-security-engineer-strategic-risk?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200693932-0836/sensor-mems-design-manager-custom-silicon-management?team=HRDWR",
    "https://jobs.apple.com/en-us/details/200694482-2911/graphics-tooling-and-rendering-engineering-intern?team=STDNT",
    "https://jobs.apple.com/en-us/details/200694552-0157/senior-manager-support-experience-readiness?team=OPMFG",
