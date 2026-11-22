@@ -2,7 +2,7 @@ name: jobwatch
 
 on:
   schedule:
-    - cron: "*/20 * * * *"   # every 20 min (GitHub may delay runs a few minutes)
+    - cron: "17 * * * *"     # hourly backup; the reliable 15-min trigger comes from cron-job.org (see README)
   workflow_dispatch:         # lets you run it manually from the Actions tab
     inputs:
       test_alert:
