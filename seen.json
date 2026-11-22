@@ -1,6 +1,6 @@
 {
  "failures": {
-  "Tesla": 5
+  "Tesla": 6
  },
  "seen": {
   "AMD": [
@@ -288,6 +288,7 @@
    "https://careers.arm.com/job/cambridge/director-technical-program-management/33099/102816747952",
    "https://careers.arm.com/job/cambridge/principal-hardware-performance-specialist/33099/76037061504",
    "https://careers.arm.com/job/cambridge/senior-cpu-performance-engineer/33099/81788236224",
+   "https://careers.arm.com/job/cambridge/senior-principal-real-time-interconnect-architect/33099/79031267008",
    "https://careers.arm.com/job/cambridge/staff-ai-solutions-specialist/33099/100391233328",
    "https://careers.arm.com/job/chandler/senior-post-silicon-pcie-characterization-engineer/33099/100509410720",
    "https://careers.arm.com/job/chandler/senior-post-silicon-validation-engineer/33099/100509410704",
@@ -977,6 +978,7 @@
    "https://apply.careers.microsoft.com/careers/job/1970393556853720",
    "https://apply.careers.microsoft.com/careers/job/1970393556869925",
    "https://apply.careers.microsoft.com/careers/job/1970393556929417",
+   "https://apply.careers.microsoft.com/careers/job/1970393556933263",
    "https://apply.careers.microsoft.com/careers/job/1970393556938879",
    "https://apply.careers.microsoft.com/careers/job/1970393556941105",
    "https://apply.careers.microsoft.com/careers/job/1970393556942140",
@@ -1006,6 +1008,7 @@
    "https://apply.careers.microsoft.com/careers/job/1970393557071295",
    "https://apply.careers.microsoft.com/careers/job/1970393557071337",
    "https://apply.careers.microsoft.com/careers/job/1970393557074928",
+   "https://apply.careers.microsoft.com/careers/job/1970393557075111",
    "https://apply.careers.microsoft.com/careers/job/1970393557075162",
    "https://apply.careers.microsoft.com/careers/job/1970393557077583"
   ],
@@ -1043,15 +1046,21 @@
    "893397442363",
    "893397443926",
    "893397444115",
+   "893397488368",
+   "893397529283",
+   "893397641177",
    "893397711585",
    "893397713471",
    "893397713550",
    "893397724354",
+   "893397742060",
    "893397742571",
    "893397758782",
    "893398107718",
    "893398154598",
    "893398545197",
+   "893398545216",
+   "893398755095",
    "893398841610",
    "893398847899",
    "893398849139",
