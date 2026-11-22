@@ -1,6 +1,6 @@
 {
  "failures": {
-  "Tesla": 12
+  "Tesla": 13
  },
  "seen": {
   "AMD": [
@@ -276,7 +276,9 @@
    "https://jobs.apple.com/en-us/details/200696331-3543/wireless-intelligence-software-engineer-wireless-technologies-ecosystems?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200696388-0836/iphone-analog-design-engineer?team=HRDWR",
    "https://jobs.apple.com/en-us/details/200696408-0836/software-development-engineer-test?team=SFTWR",
-   "https://jobs.apple.com/en-us/details/200696416-0321/audio-software-development-engineer-apple-products?team=SFTWR"
+   "https://jobs.apple.com/en-us/details/200696416-0321/audio-software-development-engineer-apple-products?team=SFTWR",
+   "https://jobs.apple.com/en-us/details/200696454-0865/phy-firmware-design-development-engineer?team=HRDWR",
+   "https://jobs.apple.com/en-us/details/200696454-0881/phy-firmware-design-development-engineer?team=HRDWR"
   ],
   "Arm": [
    "https://careers.arm.com/job/austin/principal-system-performance-telemetry-architect/33099/101885956240",
