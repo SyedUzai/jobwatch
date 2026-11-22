@@ -44,6 +44,48 @@ class Job:
     title: str
     url: str
     location: str = ""
+    age_days: float | None = None   # how long ago the company posted it, when the site says
+
+
+def age_from(value) -> float | None:
+    """Days since a timestamp given as ISO text, epoch seconds/ms, 'November 18, 2026',
+    or Workday's 'Posted 3 Days Ago'. None when unknown."""
+    from datetime import datetime, timezone
+    if value in (None, "", 0):
+        return None
+    now = datetime.now(timezone.utc)
+    try:
+        if isinstance(value, (int, float)) or (isinstance(value, str) and value.isdigit()):
+            v = float(value)
+            v = v / 1000 if v > 1e11 else v
+            return max(0.0, (now.timestamp() - v) / 86400)
+        s = str(value).strip()
+        low = s.lower()
+        if low.startswith("posted"):
+            if "today" in low:
+                return 0.0
+            if "yesterday" in low:
+                return 1.0
+            m = re.search(r"(\d+)\+?\s*day", low)
+            return float(m.group(1)) if m else None
+        for fmt in ("%B %d, %Y", "%b %d, %Y"):
+            try:
+                return max(0.0, (now - datetime.strptime(s, fmt).replace(tzinfo=timezone.utc)).total_seconds() / 86400)
+            except ValueError:
+                pass
+        dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return max(0.0, (now - dt).total_seconds() / 86400)
+    except (ValueError, OverflowError):
+        return None
+
+
+def age_text(days: float | None) -> str:
+    if days is None:
+        return ""
+    d = int(days)
+    return "posted today" if d == 0 else f"posted {d} day{'s' if d != 1 else ''} ago"
 
 
 def load_dotenv(path: Path) -> None:
@@ -135,7 +177,8 @@ def queries_for(src: dict, cfg: dict, key: str) -> list[str]:
 def fetch_greenhouse(src: dict, cfg: dict) -> list[Job]:
     data = http_get(f"https://boards-api.greenhouse.io/v1/boards/{src['board']}/jobs").json()
     return [Job(str(j["id"]), j.get("title", ""), j.get("absolute_url", ""),
-                (j.get("location") or {}).get("name", "")) for j in data.get("jobs", [])]
+                (j.get("location") or {}).get("name", ""),
+                age_from(j.get("first_published") or j.get("updated_at"))) for j in data.get("jobs", [])]
 
 
 def fetch_ashby(src: dict, cfg: dict) -> list[Job]:
@@ -147,14 +190,15 @@ def fetch_ashby(src: dict, cfg: dict) -> list[Job]:
         loc = j.get("location") or ""
         if j.get("isRemote"):
             loc = f"{loc} Remote".strip()
-        out.append(Job(str(j["id"]), j.get("title", ""), j.get("jobUrl", ""), loc))
+        out.append(Job(str(j["id"]), j.get("title", ""), j.get("jobUrl", ""), loc,
+                       age_from(j.get("publishedAt") or j.get("publishedDate"))))
     return out
 
 
 def fetch_lever(src: dict, cfg: dict) -> list[Job]:
     data = http_get(f"https://api.lever.co/v0/postings/{src['board']}?mode=json").json()
     return [Job(str(j["id"]), j.get("text", ""), j.get("hostedUrl", ""),
-                (j.get("categories") or {}).get("location", "")) for j in data]
+                (j.get("categories") or {}).get("location", ""), age_from(j.get("createdAt"))) for j in data]
 
 
 def fetch_workday(src: dict, cfg: dict) -> list[Job]:
@@ -173,8 +217,10 @@ def fetch_workday(src: dict, cfg: dict) -> list[Job]:
         http_get(home, session=s, headers={**base_headers, "Accept": "text/html"})  # sets cookies
         api_headers = {**base_headers, "Accept": "application/json", "Content-Type": "application/json",
                        "Origin": f"https://{host}", "Referer": home}
-        for q in qs:
-            for p in range(pages):
+        # A blank search returns the site's newest postings first; read those, then the keyword searches.
+        passes = [("", int(src.get("latest_pages", 3)))] + [(q, pages) for q in qs if q]
+        for q, n_pages in passes:
+            for p in range(n_pages):
                 time.sleep(pause)
                 data = http_post(api, {"appliedFacets": {}, "limit": 20, "offset": p * 20,
                                        "searchText": q}, session=s, headers=api_headers).json()
@@ -182,7 +228,8 @@ def fetch_workday(src: dict, cfg: dict) -> list[Job]:
                 for j in posts:
                     path = j.get("externalPath", "")
                     if path:
-                        jobs[path] = Job(path, j.get("title", ""), home + path, j.get("locationsText", ""))
+                        jobs[path] = Job(path, j.get("title", ""), home + path, j.get("locationsText", ""),
+                                         age_from(j.get("postedOn")))
                 if len(posts) < 20:
                     break
         return list(jobs.values())
@@ -269,8 +316,8 @@ def fetch_amazon(src: dict, cfg: dict) -> list[Job]:
         data = http_get("https://www.amazon.jobs/en/search.json", params=params).json()
         for j in data.get("jobs", []):
             jid = str(j.get("id_icims") or j.get("id"))
-            jobs[jid] = Job(jid, j.get("title", ""),
-                            "https://www.amazon.jobs" + j.get("job_path", ""), j.get("location", ""))
+            jobs[jid] = Job(jid, j.get("title", ""), "https://www.amazon.jobs" + j.get("job_path", ""),
+                            j.get("location", ""), age_from(j.get("posted_date")))
     return list(jobs.values())
 
 
@@ -292,7 +339,8 @@ def fetch_eightfold(src: dict, cfg: dict) -> list[Job]:
         url = p.get("canonicalPositionUrl") or p.get("positionUrl") or f"/careers/job/{jid}"
         if url.startswith("/"):
             url = f"https://{host}{url}"
-        jobs[jid] = Job(jid, p.get("name") or p.get("title") or "", url, str(locs))
+        jobs[jid] = Job(jid, p.get("name") or p.get("title") or "", url, str(locs),
+                        age_from(p.get("t_create") or p.get("postedTs") or p.get("creationTs")))
 
     endpoints = [
         (f"https://{host}/api/pcsx/search",
@@ -404,8 +452,8 @@ ADAPTERS = {
 def notify(new: list[tuple[str, Job]], warnings: list[str], dry: bool = False) -> None:
     lines = []
     for company, j in new:
-        loc = f" · {j.location}" if j.location else ""
-        lines.append(f"{company}: {j.title}{loc}\n{j.url}")
+        extra = "".join(f" · {x}" for x in (j.location, age_text(j.age_days)) if x)
+        lines.append(f"{company}: {j.title}{extra}\n{j.url}")
     if dry:
         for l in lines + warnings:
             print("[dry-run alert]", l.replace("\n", "  "))
@@ -432,7 +480,8 @@ def send_ntfy(new: list[tuple[str, Job]], warnings: list[str]) -> None:
 
     if len(new) <= 8:  # one tappable push per job
         for company, j in new:
-            post(f"New: {company}", f"{j.title}\n{j.location}".strip(), click=j.url)
+            post(f"New: {company}", "\n".join(x for x in (j.title, j.location, age_text(j.age_days)) if x),
+                 click=j.url)
     else:
         body = "\n".join(f"• {c}: {j.title}" for c, j in new[:30])
         if len(new) > 30:
@@ -491,6 +540,8 @@ def main() -> int:
     cfg = yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8"))
     jf = JobFilter(cfg.get("filters", {}))
     fail_alert_after = int(cfg.get("alert_after_failures", 3))
+    max_age = cfg.get("max_age_days")  # skip listings the company posted longer ago than this
+    max_age = float(max_age) if max_age not in (None, "", 0) else None
 
     if args.test_alert:
         if not (os.environ.get("NTFY_TOPIC") or os.environ.get("SMTP_USER")):
@@ -551,6 +602,10 @@ def main() -> int:
             if first_run and not args.notify_existing:
                 print(f"• {name}: first run, recorded {len(jobs)} existing jobs ({len(matching)} match) silently")
                 continue
+            stale = [j for j in matching if max_age is not None and j.age_days is not None and j.age_days > max_age]
+            for j in stale:
+                print(f"    skipped (old listing, {age_text(j.age_days)}): {j.title[:80]}")
+            matching = [j for j in matching if j not in stale]
             print(f"✓ {name}: {len(jobs)} jobs, {len(fresh)} new, {len(matching)} new matches ({dt:.0f}s)")
             new_jobs += [(name, j) for j in matching]
     finally:
@@ -559,6 +614,8 @@ def main() -> int:
     if args.check:
         return rc
 
+    # Newest postings first; jobs whose site gives no date go last.
+    new_jobs.sort(key=lambda cj: (cj[1].age_days is None, cj[1].age_days or 0))
     if new_jobs or warnings:
         notify(new_jobs, warnings, dry=args.dry_run)
     save_state(state)

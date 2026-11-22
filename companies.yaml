@@ -110,6 +110,10 @@ browser_queries:
 # Send a warning push if a source fails this many runs in a row.
 alert_after_failures: 3
 
+# Optional: skip alerts for listings posted more than this many days ago (where the site shows a
+# date). 0 = off — alert on everything.
+max_age_days: 0
+
 sources:
   # ── GPU / CPU / SoC vendors ──────────────────────────────────────────────
   - name: Nvidia
@@ -124,7 +128,7 @@ sources:
 
   - name: Qualcomm                     # [check]
     type: browser
-    url: "https://careers.qualcomm.com/careers?query={query}"
+    url: "https://careers.qualcomm.com/careers?query={query}&sort_by=timestamp"
     link: "/job/\\d+"
 
   - name: Apple                        # [check]
@@ -158,7 +162,7 @@ sources:
   # ── Hyperscaler in-house silicon ─────────────────────────────────────────
   - name: Google                       # [check]
     type: browser
-    url: "https://www.google.com/about/careers/applications/jobs/results/?q={query}"
+    url: "https://www.google.com/about/careers/applications/jobs/results/?q={query}&sort_by=date"
     link: "jobs/results/\\d+"
 
   - name: Amazon / Annapurna           # [verified]
@@ -176,7 +180,7 @@ sources:
 
   - name: Microsoft                    # [check]
     type: browser
-    url: "https://apply.careers.microsoft.com/careers?query={query}"
+    url: "https://apply.careers.microsoft.com/careers?query={query}&sort_by=timestamp"
     link: "job/\\d+"
 
   - name: OpenAI                       # [verified]
@@ -248,5 +252,5 @@ sources:
 
   - name: Rivian                       # [check]
     type: browser
-    url: "https://careers.rivian.com/careers-home/jobs?keywords={query}"
+    url: "https://careers.rivian.com/careers-home/jobs?keywords={query}&sortBy=posted_date&descending=true"
     link: "/jobs/\\d+"
