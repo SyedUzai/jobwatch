@@ -1,6 +1,6 @@
 {
  "failures": {
-  "Tesla": 22
+  "Tesla": 23
  },
  "seen": {
   "AMD": [
@@ -1196,6 +1196,7 @@
    "https://apply.careers.microsoft.com/careers/job/1970393557007507",
    "https://apply.careers.microsoft.com/careers/job/1970393557007510",
    "https://apply.careers.microsoft.com/careers/job/1970393557019385",
+   "https://apply.careers.microsoft.com/careers/job/1970393557019464",
    "https://apply.careers.microsoft.com/careers/job/1970393557023138",
    "https://apply.careers.microsoft.com/careers/job/1970393557037663",
    "https://apply.careers.microsoft.com/careers/job/1970393557037788",
@@ -1676,6 +1677,7 @@
    "66fa2750-ca23-4a3e-8970-dfe7bac97d01",
    "673ca4f5-b5dc-448f-be3c-4f888a6d13ed",
    "6742bd76-dcc7-4bbd-bdb3-00c315bc0254",
+   "6785d983-8831-46d0-9c81-443f83664948",
    "67c67c36-e710-4f21-bd9c-759eb72cfabf",
    "67c8b37d-f856-4edf-adb7-1a5b0d07f6b3",
    "680833a1-01e4-4689-917c-71a4f00ff86c",
@@ -1723,6 +1725,7 @@
    "73875295-889e-4373-b20f-654e85c66ba4",
    "73a111f9-e83d-4cce-9148-2a32ccf1d251",
    "73e56947-5d8b-414d-a0ac-9dc9b04e2406",
+   "740b5d1b-f63d-49bb-962d-8e2778e925ef",
    "7447dd43-9bf5-445f-bb8c-ba57756c8d04",
    "744844e1-f426-463c-b615-91823f0cd867",
    "7472e486-0aa6-4f9d-86da-2105a42b2dce",
@@ -1957,6 +1960,7 @@
    "bbf8d3b8-2f8f-49f8-9f35-73c7847647f7",
    "bc059a72-8ff3-4a80-a499-5b82ccca1f05",
    "bc80a3ae-1e69-4a8d-8366-77fcdd56ff61",
+   "bc85c1a9-0f75-4c3a-807b-6d2bb26c8445",
    "bd1ac97f-20f9-4727-9f92-7064035a416f",
    "bd2b8228-bb0f-42e0-94bd-c853cdd56140",
    "be7abbba-bca2-4baa-b7d8-98d5ab514520",
@@ -2015,6 +2019,7 @@
    "cce31320-258d-4a2f-96f7-6782208d5db6",
    "cd3c9c99-9527-4ba2-bea7-9f8f4892bc62",
    "cda6eab0-edab-4dfc-8923-40ca3b0928b5",
+   "ce15d226-65db-43f1-98ec-078e96a3a281",
    "ceca6916-b8d8-42cc-a32a-c27e06744b31",
    "ceef522f-2ee2-49c7-b3a0-2a227e759a72",
    "cf0516c9-5227-4d7c-a8e9-219a4ac52422",
@@ -2028,6 +2033,7 @@
    "d089cc3e-e81e-42b7-be77-23bbc9d02431",
    "d0da9c00-a65b-49be-9ebf-a55c32642540",
    "d134caf2-907c-4c85-be2d-fad477d2b425",
+   "d1906ab2-b829-4a13-b1f2-f4af97d699fa",
    "d1c6cb87-a44d-4d04-92a8-dc40eccd090e",
    "d1e4178d-8eb6-4727-9601-e230cb96eeee",
    "d1f21456-f0bf-48ad-bb8d-ae0020a10600",
@@ -2119,6 +2125,7 @@
    "ec317080-e2d2-4a73-93e6-e0a9ae6fdf96",
    "ec5a5d98-6314-44d9-9466-8d4d7ee866f6",
    "ecb1119c-0439-4b8d-938b-851b3ed84a02",
+   "ecfe655c-1369-4bcd-aae0-4a3b75fdf61b",
    "ed9255f0-981f-49e9-8b01-9fd203141929",
    "eda0d516-94bd-4257-9679-aded0d709fba",
    "eda4a2d1-682f-418e-8055-222eaf7c9abd",
