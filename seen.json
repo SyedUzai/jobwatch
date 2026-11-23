@@ -1,6 +1,6 @@
 {
  "failures": {
-  "Tesla": 41
+  "Tesla": 42
  },
  "seen": {
   "AMD": [
@@ -858,6 +858,7 @@
    "/job/Israel-Petah-Tikva/Logic-Design-Team-Lead-Manager_JR0289541",
    "/job/Japan-Tokyo/Equipment-Development-Engineer_JR0289360",
    "/job/Japan-Tokyo/Staff-EMIB-T-Substrate-Yield-Engineer_JR0287731-1",
+   "/job/Malaysia-Kulim/Facilities-Mechanical-Engineer_JR0289325",
    "/job/Malaysia-Kulim/Semiconductor-Manufacturing-Engineer_JR0288754",
    "/job/Malaysia-Penang/CPU-Validation-Engineer_JR0288521",
    "/job/Malaysia-Penang/CPU-Validation-Engineer_JR0288732",
@@ -1337,6 +1338,7 @@
    "893397758782",
    "893397758852",
    "893397913225",
+   "893398007586",
    "893398043612",
    "893398047554",
    "893398051343",
@@ -1351,16 +1353,26 @@
    "893398194179",
    "893398194582",
    "893398213975",
+   "893398215097",
    "893398235775",
+   "893398361478",
    "893398430695",
    "893398545197",
    "893398545216",
    "893398577746",
    "893398597120",
+   "893398627207",
    "893398627494",
    "893398658177",
+   "893398660009",
    "893398667607",
+   "893398715997",
+   "893398750368",
+   "893398750376",
    "893398755095",
+   "893398798511",
+   "893398798518",
+   "893398798838",
    "893398841610",
    "893398847899",
    "893398849139",
