@@ -135,3 +135,22 @@ the watcher asks for newest first: Amazon, Nvidia, AMD, Apple, Google, Qualcomm,
 Rivian. For Workday sites, it also reads the 60 newest postings before the keyword searches.
 Alerts in each run are ordered newest first, and each one says when the job was posted.
 `max_age_days` in `companies.yaml` can skip older listings, but it's off (0) by default.
+
+## 7. What else it handles
+
+- **Catch-up list:** the first run after this update sends one list of every open job that
+  matches your filters (with links), instead of dozens of separate pushes.
+- **Digest on demand:** Actions → jobwatch → Run workflow → tick **"Send me a list of every
+  open job…"** to get that full list any time.
+- **"Updated" alerts:** a job you've already seen gets alerted if its title is edited into
+  something that matches.
+- **"Now matches" alerts:** if you widen the filters in `companies.yaml`, jobs already seen that
+  now match get alerted once.
+- **Bursts:** up to 20 tappable pushes per run. Anything beyond that comes as list pushes that
+  still include every link.
+- **Broken-site warnings:** a site that fails, or suddenly returns 0 jobs, builds up a failure
+  score (successes bring it back down). At 3 you get one warning, even if the site flaps
+  between working and broken.
+- **Crash alert:** if a whole run crashes or times out, you get a push that links to the log.
+- **Time budget:** if a run passes `run_budget_minutes`, the remaining companies are skipped,
+  so alerts still go out.
