@@ -1,6 +1,6 @@
 {
  "failures": {
-  "Tesla": 44
+  "Tesla": 45
  },
  "seen": {
   "AMD": [
@@ -2290,7 +2290,9 @@
    "https://careers.qualcomm.com/careers/job/446706831919",
    "https://careers.qualcomm.com/careers/job/446715095914",
    "https://careers.qualcomm.com/careers/job/446715656563",
+   "https://careers.qualcomm.com/careers/job/446715789155",
    "https://careers.qualcomm.com/careers/job/446715793937",
+   "https://careers.qualcomm.com/careers/job/446716190676",
    "https://careers.qualcomm.com/careers/job/446716206998",
    "https://careers.qualcomm.com/careers/job/446716236335",
    "https://careers.qualcomm.com/careers/job/446717307122",
@@ -2331,10 +2333,14 @@
    "https://careers.qualcomm.com/careers/job/446721051166",
    "https://careers.qualcomm.com/careers/job/446721094633",
    "https://careers.qualcomm.com/careers/job/446721125876",
+   "https://careers.qualcomm.com/careers/job/446721129043",
    "https://careers.qualcomm.com/careers/job/446721142857",
    "https://careers.qualcomm.com/careers/job/446721160053",
+   "https://careers.qualcomm.com/careers/job/446721164775",
    "https://careers.qualcomm.com/careers/job/446721194540",
+   "https://careers.qualcomm.com/careers/job/446721208524",
    "https://careers.qualcomm.com/careers/job/446721233541",
+   "https://careers.qualcomm.com/careers/job/446721245826",
    "https://careers.qualcomm.com/careers/job/446721283289",
    "https://careers.qualcomm.com/careers/job/446721283293",
    "https://careers.qualcomm.com/careers/job/446721283297",
@@ -2354,12 +2360,15 @@
    "https://careers.qualcomm.com/careers/job/446721406334",
    "https://careers.qualcomm.com/careers/job/446721409160",
    "https://careers.qualcomm.com/careers/job/446721412375",
+   "https://careers.qualcomm.com/careers/job/446721421858",
    "https://careers.qualcomm.com/careers/job/446721432056",
    "https://careers.qualcomm.com/careers/job/446721432310",
    "https://careers.qualcomm.com/careers/job/446721473199",
    "https://careers.qualcomm.com/careers/job/446721473210",
    "https://careers.qualcomm.com/careers/job/446721519446",
    "https://careers.qualcomm.com/careers/job/446721551275",
+   "https://careers.qualcomm.com/careers/job/446721580096",
+   "https://careers.qualcomm.com/careers/job/446721580097",
    "https://careers.qualcomm.com/careers/job/446721580176",
    "https://careers.qualcomm.com/careers/job/446721603807",
    "https://careers.qualcomm.com/careers/job/446721610830",
@@ -2370,8 +2379,10 @@
    "https://careers.qualcomm.com/careers/job/446721855938",
    "https://careers.qualcomm.com/careers/job/446721867004",
    "https://careers.qualcomm.com/careers/job/446722083498",
+   "https://careers.qualcomm.com/careers/job/446722110009",
    "https://careers.qualcomm.com/careers/job/446722118827",
    "https://careers.qualcomm.com/careers/job/446722170125",
+   "https://careers.qualcomm.com/careers/job/446722197774",
    "https://careers.qualcomm.com/careers/job/446722198588",
    "https://careers.qualcomm.com/careers/job/446722201352",
    "https://careers.qualcomm.com/careers/job/446722203602",
@@ -2696,7 +2707,8 @@
    "5301373007",
    "5302197007",
    "5302318007",
-   "5302697007"
+   "5302697007",
+   "5303225007"
   ],
   "Waymo": [
    "6499165",
