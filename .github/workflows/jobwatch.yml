@@ -3,10 +3,14 @@ name: jobwatch
 on:
   schedule:
     - cron: "17 * * * *"     # hourly backup; the reliable 15-min trigger comes from cron-job.org (see README)
-  workflow_dispatch:         # lets you run it manually from the Actions tab
+  workflow_dispatch:         # lets you run it manually from the Actions tab (and cron-job.org uses this)
     inputs:
       test_alert:
         description: "Just send a test notification to my phone/email"
+        type: boolean
+        default: false
+      digest:
+        description: "Send me a list of every open job that matches my filters right now"
         type: boolean
         default: false
 
@@ -20,7 +24,7 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
 
@@ -47,7 +51,10 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
-        run: python jobwatch.py ${{ inputs.test_alert && '--test-alert' || '' }}
+        run: >-
+          python jobwatch.py
+          ${{ inputs.test_alert && '--test-alert' || '' }}
+          ${{ inputs.digest && '--digest' || '' }}
 
       - name: Save state
         if: always()
@@ -56,4 +63,14 @@ jobs:
           git config user.name "jobwatch-bot"
           git config user.email "jobwatch-bot@users.noreply.github.com"
           git add seen.json
-          git diff --cached --quiet || (git commit -m "update seen jobs" && git push)
+          git diff --cached --quiet || (git commit -m "update seen jobs" && git pull --rebase -q && git push)
+
+      - name: Tell me if the run crashed
+        if: failure() || cancelled()
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          [ -n "$NTFY_TOPIC" ] || exit 0
+          curl -s -H "Title: jobwatch run failed" -H "Tags: warning" -H "Click: $RUN_URL" \
+               -d "The job watcher crashed or timed out. Tap to see the log." "https://ntfy.sh/$NTFY_TOPIC"
