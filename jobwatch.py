@@ -672,6 +672,23 @@ def load_state() -> dict:
     return {"seen": {}, "failures": {}}
 
 
+def merge_state(local: dict, remote: dict) -> dict:
+    """Combine this run's state with a newer copy another run saved meanwhile. Seen job IDs are
+    unioned so neither run's jobs get re-alerted; everything else keeps this run's (newer) values."""
+    out = dict(remote)
+    out.update(local)
+    seen = {k: set(v) for k, v in (remote.get("seen") or {}).items()}
+    for k, v in (local.get("seen") or {}).items():
+        seen[k] = seen.get(k, set()) | set(v)
+    out["seen"] = {k: list(v) for k, v in seen.items()}
+    titles = {k: dict(v) for k, v in (remote.get("titles") or {}).items()}
+    for k, v in (local.get("titles") or {}).items():
+        titles.setdefault(k, {}).update(v)
+    out["titles"] = titles
+    out["version"] = max(local.get("version", 1), remote.get("version", 1))
+    return out
+
+
 def save_state(state: dict) -> None:
     for k in state["seen"]:
         state["seen"][k] = sorted(set(state["seen"][k]))
@@ -686,9 +703,18 @@ def main() -> int:
     ap.add_argument("--only", default="", help="comma-separated source names to run")
     ap.add_argument("--notify-existing", action="store_true",
                     help="on a source's first run, alert on all current matches instead of silently recording them")
+    ap.add_argument("--merge-state", metavar="FILE",
+                    help="merge another copy of seen.json into this one (used by the workflow) and exit")
     ap.add_argument("--digest", action="store_true",
                     help="send one list of every currently open matching job, with links")
     args = ap.parse_args()
+
+    if args.merge_state:
+        other = Path(args.merge_state)
+        if other.exists() and other.stat().st_size and STATE_PATH.exists():
+            save_state(merge_state(load_state(), json.loads(other.read_text(encoding="utf-8"))))
+            print("Merged newer saved state into seen.json")
+        return 0
 
     load_dotenv(HERE / ".env")
     cfg = yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8"))
