@@ -27,6 +27,8 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}   # latest commit when the run starts, not when it was triggered
 
       - uses: actions/setup-python@v5
         with:
@@ -62,8 +64,20 @@ jobs:
           [ -f seen.json ] || exit 0
           git config user.name "jobwatch-bot"
           git config user.email "jobwatch-bot@users.noreply.github.com"
-          git add seen.json
-          git diff --cached --quiet || (git commit -m "update seen jobs" && git pull --rebase -q && git push)
+          BRANCH="${{ github.ref_name }}"
+          for attempt in 1 2 3; do
+            # Fold in anything another run saved meanwhile, then commit on top of the latest version.
+            git fetch -q origin "$BRANCH"
+            git show "origin/$BRANCH:seen.json" > /tmp/remote_seen.json 2>/dev/null || : > /tmp/remote_seen.json
+            python jobwatch.py --merge-state /tmp/remote_seen.json
+            git reset -q --mixed "origin/$BRANCH"
+            git add seen.json
+            git diff --cached --quiet && exit 0
+            git commit -q -m "update seen jobs"
+            git push -q origin "HEAD:$BRANCH" && exit 0
+            echo "Push raced with another run, retrying ($attempt)"; sleep 5
+          done
+          exit 1
 
       - name: Tell me if the run crashed
         if: failure() || cancelled()
