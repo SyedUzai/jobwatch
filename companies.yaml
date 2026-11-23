@@ -7,6 +7,8 @@
 #                                 (paced + cookies to avoid 429s; falls back to the browser)
 #   eightfold                   → Eightfold career sites (Nvidia)
 #   tesla                       → Tesla's careers feed
+#
+# Browser sources can also set `pages: 2` + `page_param: page` to read result page 2.
 #   amazon                      → amazon.jobs search API (covers Annapurna Labs)
 #   browser                     → opens the careers search page in headless Chrome and
 #                                 collects job links matching `link` (for custom sites)
@@ -37,6 +39,26 @@ filters:
     - NCG
     - intern
     - internship
+    # wording gaps found Nov 2026
+    - perf
+    - bring up
+    - post-si
+    - post si
+    - graduate
+    - entry level
+    - entry-level
+    - engineer I
+    - engineer 1
+    - university grad
+    - class of 2027
+    - "2027"
+    - architect
+    - silicon test
+    - silicon debug
+    - systems validation
+    - system validation
+    - hardware validation
+    - benchmarking
   exclude:
     - senior
     - sr
@@ -54,6 +76,12 @@ filters:
     - recruiter
     - finance
     - legal
+    - solutions architect
+  # Phrases ignored by the exclude check, so "staff" in these doesn't knock a job out.
+  # AI startups (OpenAI, xAI, Etched, MatX, Cerebras) title most engineers "Member of Technical Staff".
+  exclude_exceptions:
+    - member of technical staff
+    - technical staff
   # Location must contain one of these (whole-word). Jobs with no location shown are kept.
   # Delete the whole list to allow any location.
   locations:
@@ -92,20 +120,78 @@ filters:
     - Portland
     - Hillsboro
     - Boston
+    - U.S.
+    - Ottawa
+    - Kanata
+    - Waterloo
+    - Vancouver
+    - Montreal
+    - Arizona
+    - AZ
+    - Chandler
+    - Phoenix
+    - Tempe
+    - Colorado
+    - CO
+    - Fort Collins
+    - Boulder
+    - North Carolina
+    - NC
+    - Durham
+    - Raleigh
+    - New York
+    - NY
+    - Georgia
+    - GA
+    - Atlanta
+    - Utah
+    - UT
+    - Florida
+    - FL
+    - Pennsylvania
+    - PA
+    - Minnesota
+    - MN
+    - Illinois
+    - IL
+    - Michigan
+    - MI
+    - New Jersey
+    - NJ
+    - Virginia
+    - VA
+    - Idaho
+    - Boise
+    - Folsom
+    - Irvine
+    - Los Angeles
+    - Plano
+    - Allen
+    - Dallas
+    - Houston
+    - Kirkland
+    - Beaverton
+    - Hudson
+    - Westford
 
 # Search terms used by workday / amazon sources (unless a source sets its own `queries`).
 search_queries:
   - post silicon
   - silicon validation
   - silicon performance
+  - performance engineer
   - performance architect
   - new college grad
+  - new grad
+  - bring up
 
 # Search terms used by browser sources. Keep this short — each term is one page load per company.
 browser_queries:
   - post silicon
   - silicon validation
-  - silicon performance
+  - performance engineer
+  - performance architect
+  - new college grad
 
 # Send a warning push if a source fails this many runs in a row.
 alert_after_failures: 3
@@ -113,6 +199,10 @@ alert_after_failures: 3
 # Optional: skip alerts for listings posted more than this many days ago (where the site shows a
 # date). 0 = off — alert on everything.
 max_age_days: 0
+
+# If a run takes longer than this, the remaining companies are skipped (and counted as failures)
+# so the run still sends its alerts and saves. GitHub kills runs after 25 minutes.
+run_budget_minutes: 16
 
 sources:
   # ── GPU / CPU / SoC vendors ──────────────────────────────────────────────
@@ -125,6 +215,8 @@ sources:
     type: browser
     url: "https://careers.amd.com/careers-home/jobs?keywords={query}&sortBy=posted_date&descending=true"
     link: "/jobs/\\d+"
+    pages: 2
+    page_param: page
 
   - name: Qualcomm                     # [check]
     type: browser
@@ -135,6 +227,8 @@ sources:
     type: browser
     url: "https://jobs.apple.com/en-us/search?search={query}&sort=newest"
     link: "/details/[\\w-]+"
+    pages: 2
+    page_param: page
 
   - name: Intel                        # [check]
     type: workday
@@ -164,6 +258,8 @@ sources:
     type: browser
     url: "https://www.google.com/about/careers/applications/jobs/results/?q={query}&sort_by=date"
     link: "jobs/results/\\d+"
+    pages: 2
+    page_param: page
 
   - name: Amazon / Annapurna           # [verified]
     type: amazon
@@ -223,19 +319,18 @@ sources:
     url: "https://www.cerebras.ai/open-positions"
     link: "(greenhouse\\.io|lever\\.co|ashbyhq\\.com|/open-positions/.+|/job)"
 
-  - name: SambaNova                    # [check]
+  - name: SambaNova                    # [check] only counts links to real job-board postings
     type: browser
-    url: "https://sambanova.ai/careers"
-    link: "(greenhouse\\.io|lever\\.co|ashbyhq\\.com|workable\\.com|/careers/.+|/jobs?/)"
+    url: "https://sambanova.ai/company/careers/job-openings"
+    link: "(greenhouse\\.io/.+/jobs?/|lever\\.co/.+/[0-9a-f-]{20,}|ashbyhq\\.com/.+/[0-9a-f-]{20,}|workable\\.com/.+/j/|myworkdayjobs\\.com/.+/job/|jobs\\.gem\\.com/.+/|rippling\\.com/.+/jobs/|bamboohr\\.com/careers/\\d+)"
 
   - name: MatX                         # [verified]
     type: ashby
     board: matx
 
-  - name: d-Matrix                     # [check]
-    type: browser
-    url: "https://www.d-matrix.ai/careers/"
-    link: "(greenhouse\\.io|lever\\.co|ashbyhq\\.com|workable\\.com|myworkdayjobs|/careers/.+|/jobs?/)"
+  - name: d-Matrix                     # [verified] Ashby board
+    type: ashby
+    board: d-Matrix
 
   - name: Lightmatter                  # [verified]
     type: greenhouse
@@ -254,3 +349,5 @@ sources:
     type: browser
     url: "https://careers.rivian.com/careers-home/jobs?keywords={query}&sortBy=posted_date&descending=true"
     link: "/jobs/\\d+"
+    pages: 2
+    page_param: page

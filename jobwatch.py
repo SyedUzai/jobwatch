@@ -7,6 +7,7 @@ Usage:
   python jobwatch.py --check    # test every source and show what matches (no alerts, no state change)
   python jobwatch.py --test-alert   # send a test notification to your phone/email
   python jobwatch.py --only Nvidia,Groq   # limit to some sources (any mode)
+  python jobwatch.py --digest   # send one list of every open job that matches right now
 
 Config: companies.yaml (sources + filters). Secrets: environment variables or a .env file.
 """
@@ -45,6 +46,26 @@ class Job:
     url: str
     location: str = ""
     age_days: float | None = None   # how long ago the company posted it, when the site says
+    loc_reliable: bool = True       # False when the location was guessed from page text
+    note: str = ""                  # extra line shown in the alert, e.g. why it's alerting now
+
+
+# Query-string parameters that only describe the search, not the job. Stripped from job IDs so the
+# same posting found by two different searches (or on page 2) counts once.
+NOISE_PARAMS = {"q", "query", "keywords", "keyword", "search", "k", "src", "source", "page", "start",
+                "sort", "sort_by", "sortby", "descending", "location", "locations", "gh_src", "ref",
+                "lever-source", "lever-origin", "site", "jobindex", "from", "trk"}
+
+
+def norm_id(job_id: str) -> str:
+    """Normalise URL-style job IDs: drop the fragment, search-only parameters and trailing slash."""
+    from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+    if not str(job_id).startswith("http"):
+        return str(job_id)
+    p = urlsplit(job_id)
+    keep = [(k, v) for k, v in parse_qsl(p.query, keep_blank_values=True)
+            if k.lower() not in NOISE_PARAMS and not k.lower().startswith("utm_")]
+    return urlunsplit((p.scheme, p.netloc.lower(), p.path.rstrip("/") or "/", urlencode(keep), ""))
 
 
 def age_from(value) -> float | None:
@@ -148,21 +169,40 @@ def word_regex(terms: list[str]) -> re.Pattern | None:
     return re.compile("|".join(alts), re.IGNORECASE)
 
 
+# Text that clearly is a place (used to decide whether a location guessed from page text is real).
+LOOKS_LIKE_PLACE = re.compile(
+    r",|\b(India|Taiwan|China|Israel|Germany|Japan|Korea|Singapore|Poland|Ireland|France|Netherlands|"
+    r"Mexico|Malaysia|Vietnam|Philippines|Romania|Spain|Italy|Sweden|Finland|Denmark|Switzerland|Austria|"
+    r"Hungary|Czech|Serbia|Brazil|Costa Rica|Argentina|Australia|United Kingdom|UK|England|Scotland|"
+    r"Bangalore|Bengaluru|Hyderabad|Pune|Shanghai|Beijing|Shenzhen|Hsinchu|Taipei|Tel Aviv|Haifa|"
+    r"Yokneam|Munich|Dresden|Tokyo|Seoul|Penang|Cork|Cambridge|London|Belfast)\b", re.I)
+
+
 class JobFilter:
     def __init__(self, cfg: dict):
         self.include = word_regex(cfg.get("include", []))
         self.exclude = word_regex(cfg.get("exclude", []))
+        self.exceptions = word_regex(cfg.get("exclude_exceptions", []))
         self.locations = word_regex(cfg.get("locations", []))
 
     def matches(self, job: Job) -> bool:
-        if self.include and not self.include.search(job.title):
+        title = job.title
+        if self.include and not self.include.search(title):
             return False
-        if self.exclude and self.exclude.search(job.title):
-            return False
-        if self.locations and job.location.strip():
-            loc = job.location
-            # Workday shows "3 Locations" when there are several — let those through.
-            if not re.search(r"\d+\s+locations", loc, re.I) and not self.locations.search(loc):
+        if self.exclude:
+            # Phrases like "Member of Technical Staff" are blanked out before the exclude check,
+            # so "staff" there doesn't knock the job out.
+            check = self.exceptions.sub(" ", title) if self.exceptions else title
+            if self.exclude.search(check):
+                return False
+        loc = job.location.strip()
+        if self.locations and loc:
+            if not job.loc_reliable and not LOOKS_LIKE_PLACE.search(loc):
+                return True  # page text that isn't clearly a place — don't judge on it
+            # "3 Locations", "Multiple Locations", "Various" etc. — let those through.
+            if re.search(r"\d+\s+locations|multiple locations|various|flexible|anywhere", loc, re.I):
+                return True
+            if not self.locations.search(loc):
                 return False
         return True
 
@@ -329,13 +369,15 @@ def fetch_eightfold(src: dict, cfg: dict) -> list[Job]:
     jobs: dict[str, Job] = {}
     errors = []
 
+    pages = int(src.get("pages", 3))
+
     def add(p: dict) -> None:
         jid = str(p.get("id") or p.get("positionId") or "")
         if not jid:
             return
         locs = p.get("locations") or p.get("standardizedLocations") or p.get("location") or ""
-        if isinstance(locs, list):
-            locs = " | ".join(str(l.get("name", l) if isinstance(l, dict) else l) for l in locs[:3])
+        if isinstance(locs, list):  # keep every location so the location filter sees all of them
+            locs = " | ".join(str(l.get("name", l) if isinstance(l, dict) else l) for l in locs)
         url = p.get("canonicalPositionUrl") or p.get("positionUrl") or f"/careers/job/{jid}"
         if url.startswith("/"):
             url = f"https://{host}{url}"
@@ -344,20 +386,25 @@ def fetch_eightfold(src: dict, cfg: dict) -> list[Job]:
 
     endpoints = [
         (f"https://{host}/api/pcsx/search",
-         lambda q: {"domain": domain, "query": q, "location": "", "start": 0, "sort_by": "timestamp"},
+         lambda q, start: {"domain": domain, "query": q, "location": "", "start": start, "sort_by": "timestamp"},
          lambda d: (d.get("data") or {}).get("positions")),
         (f"https://{host}/api/apply/v2/jobs",
-         lambda q: {"domain": domain, "query": q, "start": 0, "num": 50, "sort_by": "timestamp"},
+         lambda q, start: {"domain": domain, "query": q, "start": start, "num": 50, "sort_by": "timestamp"},
          lambda d: d.get("positions")),
     ]
     for url, params, extract in endpoints:
         try:
             for q in qs:
-                positions = extract(http_get(url, params=params(q)).json())
-                if positions is None:
-                    raise ValueError("unexpected response shape")
-                for p in positions:
-                    add(p)
+                start = 0
+                for _ in range(pages):  # read several result pages, not just the first ~10
+                    positions = extract(http_get(url, params=params(q, start)).json())
+                    if positions is None:
+                        raise ValueError("unexpected response shape")
+                    for p in positions:
+                        add(p)
+                    if not positions:
+                        break
+                    start += len(positions)
             return list(jobs.values())
         except Exception as e:
             errors.append(f"{url.rsplit('/api/', 1)[1]}: {type(e).__name__}")
@@ -402,34 +449,88 @@ class Browser:
         cls._pw = cls._browser = None
 
 
+# Link text that is a button label, not a job title.
+GENERIC_LINK_TEXT = re.compile(r"^(learn more|apply( now)?|view( job| details| role)?|see (details|more|job)|"
+                               r"details|more|read more|open|go|job details|share|save|→|>)$", re.I)
+
+# For each link: [href, its own text, aria-label, heading of the card it sits in, the card's text].
+LINKS_JS = """els => els.map(e => {
+  const card = e.closest('li, article, [role=listitem], [class*=card], [class*=Card], [class*=job], [class*=result]');
+  const h = card ? card.querySelector('h1, h2, h3, h4, [class*=title], [class*=Title]') : null;
+  return [e.href, e.innerText || '', e.getAttribute('aria-label') || '', h ? (h.innerText || '') : '',
+          card ? (card.innerText || '').slice(0, 600) : ''];
+})"""
+
+
+def _title_and_location(text: str, aria: str, heading: str, card: str = "") -> tuple[str, str]:
+    lines = [l.strip() for l in (text or "").splitlines() if l.strip()]
+    first = lines[0] if lines else ""
+    if first and not GENERIC_LINK_TEXT.match(first) and len(first) > 3:
+        return first[:160], " · ".join(lines[1:3])[:200]
+    heading = (heading or "").strip().splitlines()[0].strip() if (heading or "").strip() else ""
+    if heading and not GENERIC_LINK_TEXT.match(heading):
+        title = heading
+    else:
+        title = re.sub(r"^(learn more|read more|apply|view)( about| for)?\s*", "", (aria or "").strip(), flags=re.I)
+    # The link itself had no useful text, so look for a place name elsewhere on the job card.
+    loc = ""
+    for line in (l.strip() for l in (card or "").splitlines()):
+        if line and line != title and not GENERIC_LINK_TEXT.match(line) and LOOKS_LIKE_PLACE.search(line):
+            loc = re.sub(r"\s*(learn more|apply now|apply|view job|view details|read more)\s*$", "", line, flags=re.I)
+            break
+    return title[:160], loc[:200]
+
+
 def fetch_browser(src: dict, cfg: dict) -> list[Job]:
-    """Load a careers search page in a real browser and collect job links matching a regex."""
+    """Load a careers search page in a real browser and collect job links matching a regex.
+    Optional per-source settings: pages + page_param (read result pages 2..N), wait_ms (max wait)."""
     link_re = re.compile(src["link"], re.I)
-    wait_ms = int(src.get("wait_ms", 5000))
+    wait_ms = int(src.get("wait_ms", 8000))
     url_tpl = src["url"]
     qs = queries_for(src, cfg, "browser_queries") if "{query}" in url_tpl else [""]
+    pages = int(src.get("pages", 1)) if src.get("page_param") else 1
     jobs: dict[str, Job] = {}
+
+    def count_links(page) -> int:
+        hrefs = page.eval_on_selector_all("a[href]", "els => els.map(e => e.href)")
+        return sum(1 for h in hrefs if link_re.search(h))
+
     for q in qs:
-        page = Browser.page()
-        try:
-            page.goto(url_tpl.replace("{query}", quote(q)), wait_until="domcontentloaded", timeout=60000)
-            page.wait_for_timeout(wait_ms)
-            for _ in range(2):  # nudge lazy-loading lists
-                page.mouse.wheel(0, 4000)
-                page.wait_for_timeout(800)
-            links = page.eval_on_selector_all(
-                "a[href]", "els => els.map(e => [e.href, (e.innerText || e.getAttribute('aria-label') || '')])")
-        finally:
-            page.context.close()
-        for href, text in links:
-            if not link_re.search(href):
-                continue
-            href = urldefrag(href)[0]
-            lines = [l.strip() for l in (text or "").splitlines() if l.strip()]
-            title = lines[0][:160] if lines else ""
-            loc = " · ".join(lines[1:3])[:120] if len(lines) > 1 else ""
-            if href not in jobs or (title and not jobs[href].title):
-                jobs[href] = Job(href, title, href, loc)
+        for n in range(1, pages + 1):
+            url = url_tpl.replace("{query}", quote(q))
+            if n > 1:
+                url += ("&" if "?" in url else "?") + f"{src['page_param']}={n}"
+            page = Browser.page()
+            try:
+                page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                # Wait until job links appear and stop changing, instead of a fixed sleep.
+                waited, last, stable = 0, -1, 0
+                while waited < wait_ms:
+                    page.wait_for_timeout(500)
+                    waited += 500
+                    c = count_links(page)
+                    stable = stable + 1 if (c == last and c > 0) else 0
+                    last = c
+                    if stable >= 2:
+                        break
+                for _ in range(2):  # nudge lazy-loading lists
+                    page.mouse.wheel(0, 4000)
+                    page.wait_for_timeout(600)
+                links = page.eval_on_selector_all("a[href]", LINKS_JS)
+            finally:
+                page.context.close()
+            found_here = 0
+            for href, text, aria, heading, card in links:
+                if not link_re.search(href):
+                    continue
+                jid = norm_id(href)
+                title, loc = _title_and_location(text, aria, heading, card)
+                found_here += 1
+                old = jobs.get(jid)
+                if old is None or (title and (not old.title or GENERIC_LINK_TEXT.match(old.title))):
+                    jobs[jid] = Job(jid, title, urldefrag(href)[0], loc, loc_reliable=False)
+            if found_here == 0:
+                break  # no more result pages
     if not jobs:
         raise RuntimeError("found 0 job links — the page layout or URL may have changed")
     return list(jobs.values())
@@ -452,8 +553,9 @@ ADAPTERS = {
 def notify(new: list[tuple[str, Job]], warnings: list[str], dry: bool = False) -> None:
     lines = []
     for company, j in new:
-        extra = "".join(f" · {x}" for x in (j.location, age_text(j.age_days)) if x)
-        lines.append(f"{company}: {j.title}{extra}\n{j.url}")
+        extra = "".join(f" · {x}" for x in (j.location[:120], age_text(j.age_days)) if x)
+        tag = f"[{j.note}] " if j.note else ""
+        lines.append(f"{tag}{company}: {j.title}{extra}\n{j.url}")
     if dry:
         for l in lines + warnings:
             print("[dry-run alert]", l.replace("\n", "  "))
@@ -473,20 +575,30 @@ def send_ntfy(new: list[tuple[str, Job]], warnings: list[str]) -> None:
         h = {"Title": title.encode("utf-8"), "Tags": tags, "Priority": prio}
         if click:
             h["Click"] = click
+            h["Actions"] = f"view, Open job, {click}"  # visible button in the app and on ntfy.sh/app
         try:
             requests.post(url, data=body.encode("utf-8"), headers=h, timeout=TIMEOUT).raise_for_status()
         except requests.RequestException as e:
             print(f"ntfy failed: {e}", file=sys.stderr)
 
-    if len(new) <= 8:  # one tappable push per job
-        for company, j in new:
-            post(f"New: {company}", "\n".join(x for x in (j.title, j.location, age_text(j.age_days)) if x),
-                 click=j.url)
-    else:
-        body = "\n".join(f"• {c}: {j.title}" for c, j in new[:30])
-        if len(new) > 30:
-            body += f"\n…and {len(new) - 30} more (see email)"
-        post(f"{len(new)} new jobs", body)
+    per_job = int(os.environ.get("NTFY_MAX_PER_JOB", "20"))
+    for company, j in new[:per_job]:  # one tappable push (with an Open job button) per job
+        loc = j.location if len(j.location) <= 90 else j.location[:87] + "…"
+        post(f"{j.note or 'New'}: {company}",
+             "\n".join(x for x in (j.title, loc, age_text(j.age_days)) if x), click=j.url)
+        time.sleep(0.5)  # stay well under ntfy.sh's burst limit
+    rest = new[per_job:]
+    if rest:  # anything beyond that goes into list pushes that still carry every link
+        lines = [f"• {c}: {j.title}\n  {j.url}" for c, j in rest]
+        chunk, chunks = "", []
+        for line in lines:
+            if len(chunk) + len(line) > 3500:
+                chunks.append(chunk)
+                chunk = ""
+            chunk += line + "\n"
+        chunks.append(chunk)
+        for i, body in enumerate(chunks, 1):
+            post(f"{len(rest)} more new jobs ({i}/{len(chunks)})", body.strip(), prio="default")
     for w in warnings:
         post("jobwatch warning", w, tags="warning", prio="default")
 
@@ -512,7 +624,47 @@ def send_email(lines: list[str], warnings: list[str]) -> None:
         print(f"email failed: {e}", file=sys.stderr)
 
 
+def send_digest(heading: str, items: list[tuple[str, Job]], warnings: list[str], dry: bool = False) -> None:
+    lines = [f"• {c}: {j.title}" + (f" ({age_text(j.age_days)})" if j.age_days is not None else "")
+             + f"\n  {j.url}" for c, j in items]
+    if dry:
+        print(f"[dry-run digest] {heading}: {len(items)} jobs")
+        for l in lines + warnings:
+            print("   ", l.replace("\n", "  "))
+        return
+    send_email([f"{c}: {j.title}\n{j.url}" for c, j in items], warnings)
+    topic = os.environ.get("NTFY_TOPIC", "").strip()
+    if not topic:
+        return
+    url = f"{os.environ.get('NTFY_SERVER', 'https://ntfy.sh').rstrip('/')}/{topic}"
+    chunks, chunk = [], ""
+    for line in lines or ["Nothing open matches your filters right now."]:
+        if len(chunk) + len(line) > 3500:
+            chunks.append(chunk)
+            chunk = ""
+        chunk += line + "\n"
+    chunks.append(chunk)
+    for i, body in enumerate(chunks, 1):
+        title = f"{heading} — {len(items)} jobs" + (f" ({i}/{len(chunks)})" if len(chunks) > 1 else "")
+        try:
+            requests.post(url, data=body.strip().encode("utf-8"), timeout=TIMEOUT,
+                          headers={"Title": title.encode("utf-8"), "Tags": "clipboard", "Priority": "default"}
+                          ).raise_for_status()
+        except requests.RequestException as e:
+            print(f"ntfy failed: {e}", file=sys.stderr)
+        time.sleep(0.5)
+    for w in warnings:
+        try:
+            requests.post(url, data=w.encode("utf-8"), timeout=TIMEOUT,
+                          headers={"Title": b"jobwatch warning", "Tags": "warning"}).raise_for_status()
+        except requests.RequestException as e:
+            print(f"ntfy failed: {e}", file=sys.stderr)
+
+
 # ───────────────────────────── main ─────────────────────────────
+
+STATE_VERSION = 2
+
 
 def load_state() -> dict:
     if STATE_PATH.exists():
@@ -534,6 +686,8 @@ def main() -> int:
     ap.add_argument("--only", default="", help="comma-separated source names to run")
     ap.add_argument("--notify-existing", action="store_true",
                     help="on a source's first run, alert on all current matches instead of silently recording them")
+    ap.add_argument("--digest", action="store_true",
+                    help="send one list of every currently open matching job, with links")
     args = ap.parse_args()
 
     load_dotenv(HERE / ".env")
@@ -556,13 +710,51 @@ def main() -> int:
                and (not only or s["name"].lower() in only)]
 
     state = load_state()
+    state.setdefault("seen", {})
+    state.setdefault("failures", {})
+    state.setdefault("titles", {})
+    if "warned" not in state:  # upgrading: sources already past the threshold were warned before
+        state["warned"] = {n: True for n, c in state["failures"].items() if c >= fail_alert_after}
+    upgrading = state.get("version", 1) < STATE_VERSION and bool(state["seen"]) and not only
+    digest = args.digest or upgrading
+
+    filters_now = cfg.get("filters", {})
+    old_filters = state.get("filters")
+    old_jf = JobFilter(old_filters) if (old_filters is not None and old_filters != filters_now) else None
+
+    budget_s = float(cfg.get("run_budget_minutes", 12)) * 60
+    run_start = time.time()
     new_jobs: list[tuple[str, Job]] = []
+    all_matches: list[tuple[str, Job]] = []   # every currently-open match (for digests)
     warnings: list[str] = []
     rc = 0
+
+    def record_failure(name: str, err: str) -> None:
+        # Failures count up, successes count down (instead of resetting), so a site that
+        # keeps flapping between working and broken still reaches the warning threshold.
+        n = min(state["failures"].get(name, 0) + 1, fail_alert_after * 2)
+        state["failures"][name] = n
+        print(f"✗ {name}: {err[:200]} (failure score {n}/{fail_alert_after})")
+        if n >= fail_alert_after and not state["warned"].get(name):
+            state["warned"][name] = True
+            warnings.append(f"{name} keeps failing: {err[:200]}. "
+                            f"Run `python jobwatch.py --check --only \"{name}\"` and fix companies.yaml.")
+
+    def record_success(name: str) -> None:
+        n = state["failures"].get(name, 0) - 1
+        if n <= 0:
+            state["failures"].pop(name, None)
+            state["warned"].pop(name, None)
+        else:
+            state["failures"][name] = n
 
     try:
         for src in sources:
             name, typ = src["name"], src["type"]
+            if not args.check and time.time() - run_start > budget_s:
+                # Out of time: skip the rest so this run still sends its alerts and saves.
+                record_failure(name, "skipped — the run hit its time budget (run_budget_minutes)")
+                continue
             t0 = time.time()
             try:
                 jobs = ADAPTERS[typ](src, cfg)
@@ -572,6 +764,11 @@ def main() -> int:
                 if os.environ.get("JOBWATCH_DEBUG"):
                     traceback.print_exc()
             dt = time.time() - t0
+            for j in jobs:
+                j.id = norm_id(j.id)
+            prev_seen = state["seen"].get(name, [])
+            if not err and not jobs and prev_seen:
+                err = f"returned 0 jobs (it listed {len(prev_seen)} before) — the site may have changed"
 
             if args.check:
                 if err:
@@ -585,23 +782,36 @@ def main() -> int:
                 continue
 
             if err:
-                n = state["failures"].get(name, 0) + 1
-                state["failures"][name] = n
-                print(f"✗ {name}: {err[:200]} (failure #{n})")
-                if n == fail_alert_after:
-                    warnings.append(f"{name} has failed {n} runs in a row: {err[:200]}. "
-                                    f"Run `python jobwatch.py --check --only \"{name}\"` and fix companies.yaml.")
+                record_failure(name, err)
                 continue
-            state["failures"].pop(name, None)
+            record_success(name)
 
             first_run = name not in state["seen"]
-            seen = set(state["seen"].get(name, []))
+            seen = {norm_id(x) for x in prev_seen}
+            prev_titles = state["titles"].get(name, {})
             fresh = [j for j in jobs if j.id not in seen]
             state["seen"][name] = list(seen | {j.id for j in jobs})
+            state["titles"][name] = {j.id: j.title for j in jobs if j.title}
             matching = [j for j in fresh if jf.matches(j)]
+            all_matches += [(name, j) for j in jobs if jf.matches(j)]
             if first_run and not args.notify_existing:
                 print(f"• {name}: first run, recorded {len(jobs)} existing jobs ({len(matching)} match) silently")
                 continue
+
+            # Jobs seen before that match now but didn't then: the title was edited to something
+            # that matches, or you changed the filters in companies.yaml.
+            for j in jobs:
+                if j.id not in seen or not jf.matches(j):
+                    continue
+                old_title = prev_titles.get(j.id, "")
+                if (old_title and old_title != j.title and not GENERIC_LINK_TEXT.match(old_title)
+                        and not jf.matches(Job(j.id, old_title, j.url, j.location, loc_reliable=j.loc_reliable))):
+                    j.note = "Updated"
+                    matching.append(j)
+                elif old_jf is not None and not old_jf.matches(j):
+                    j.note = "Now matches"
+                    matching.append(j)
+
             stale = [j for j in matching if max_age is not None and j.age_days is not None and j.age_days > max_age]
             for j in stale:
                 print(f"    skipped (old listing, {age_text(j.age_days)}): {j.title[:80]}")
@@ -614,12 +824,23 @@ def main() -> int:
     if args.check:
         return rc
 
-    # Newest postings first; jobs whose site gives no date go last.
-    new_jobs.sort(key=lambda cj: (cj[1].age_days is None, cj[1].age_days or 0))
-    if new_jobs or warnings:
+    def newest_first(items):
+        return sorted(items, key=lambda cj: (cj[1].age_days is None, cj[1].age_days or 0))
+
+    new_jobs = newest_first(new_jobs)
+    if digest:
+        # One list of every job that matches right now (with links), instead of one push each.
+        heading = ("Catch-up: open jobs matching your filters" if upgrading and not args.digest
+                   else "Digest: open jobs matching your filters")
+        send_digest(heading, newest_first(all_matches), warnings, dry=args.dry_run)
+    elif new_jobs or warnings:
         notify(new_jobs, warnings, dry=args.dry_run)
+    if not only:
+        state["filters"] = filters_now
+        state["version"] = STATE_VERSION
     save_state(state)
-    print(f"Done: {len(new_jobs)} new matching job(s), {len(warnings)} warning(s).")
+    print(f"Done: {len(new_jobs)} new matching job(s), {len(all_matches)} open matches, "
+          f"{len(warnings)} warning(s){' (sent as digest)' if digest else ''}.")
     return 0
 
 
