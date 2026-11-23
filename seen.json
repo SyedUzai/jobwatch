@@ -1,6 +1,6 @@
 {
  "failures": {
-  "Tesla": 45
+  "Tesla": 46
  },
  "seen": {
   "AMD": [
@@ -840,6 +840,7 @@
    "/job/India-Bangalore/AI-System-Performance-Architect_JR0288192",
    "/job/India-Bangalore/CPU-Performance-Architect_JR0288151",
    "/job/India-Bangalore/CPU-Pre-Silicon-Verification-Lead_JR0287106",
+   "/job/India-Bangalore/DFT-Engineer---GPU-Logic-Design-Engineer_JR0287980",
    "/job/India-Bangalore/GPU-Architecture-and-AI-Performance-Simulation-Engineer_JR0288226",
    "/job/India-Bangalore/GPU-Design-Verification-Engineer_JR0289371",
    "/job/India-Bangalore/GPU-Logic-Design-Engineer_JR0289261",
@@ -888,6 +889,7 @@
    "/job/PRC-Shanghai/Compiler-Engineer_JR0288426",
    "/job/PRC-Shanghai/Compiler-Performance-Engineer_JR0288444",
    "/job/PRC-Shanghai/Platform-Power-Thermal-Performance-Engineer_JR0286409",
+   "/job/PRC-Shanghai/Security-Software-Applications-Eng-Graduate-Intern_JR0289314",
    "/job/PRC-Shanghai/Senior-Compiler-Performance-Engineer_JR0288441",
    "/job/Poland-Gdansk/AI-Software-Development-Intern_JR0288895",
    "/job/Taiwan-Taipei/BIOS-Platform-Application-Engineer_JR0289343",
