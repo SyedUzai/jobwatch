@@ -680,7 +680,8 @@
    "https://jobs.apple.com/en-us/details/200696469-3715/software-engineer-data-solutions-is-t-ai-data-platforms?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200696475-1052/senior-software-qa-engineer-find-my?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200696484-0865/camera-hardware-engineering-program-manager?team=HRDWR",
-   "https://jobs.apple.com/en-us/details/200696537-6205/asic-design-integration-engineer-pixel-ip?team=HRDWR"
+   "https://jobs.apple.com/en-us/details/200696537-6205/asic-design-integration-engineer-pixel-ip?team=HRDWR",
+   "https://jobs.apple.com/en-us/details/200696582-3715/software-engineer-data-services-is-t-ai-data-platforms?team=SFTWR"
   ],
   "Arm": [
    "https://careers.arm.com/job/austin/memory-controller-performance-architect/33099/100445444208",
@@ -1201,6 +1202,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/112850349777134278-analyst-trust-and-safety-ads-content-safety",
    "https://www.google.com/about/careers/applications/jobs/results/112980023429735110-staff-software-systems-engineer-companion-robots-deepmind",
    "https://www.google.com/about/careers/applications/jobs/results/112992800957440710-senior-tpu-validation-engineer",
+   "https://www.google.com/about/careers/applications/jobs/results/113069083871584966-edgeai-soc-verification-technical-lead-google-cloud",
    "https://www.google.com/about/careers/applications/jobs/results/113095953186988742-data-engineer",
    "https://www.google.com/about/careers/applications/jobs/results/113129771759477446-software-engineer-ii-ai-infrastructure",
    "https://www.google.com/about/careers/applications/jobs/results/113686390931104454-strategic-cloud-engineer-data-analytics",
@@ -1242,6 +1244,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/124960405205197510-rtl-design-engineer-silicon-engineering",
    "https://www.google.com/about/careers/applications/jobs/results/125068535301841606-forward-deployed-engineer-genai-mandarin-english",
    "https://www.google.com/about/careers/applications/jobs/results/125146540497871558-technical-program-manager-privacy-consent-and-personalization-search",
+   "https://www.google.com/about/careers/applications/jobs/results/125395708730581702-data-engineer",
    "https://www.google.com/about/careers/applications/jobs/results/125438658403541702-senior-software-engineer-bigquery-agentic-ai",
    "https://www.google.com/about/careers/applications/jobs/results/126457965812032198-soc-quality-and-reliability-test-engineer-google-cloud",
    "https://www.google.com/about/careers/applications/jobs/results/126788454955524806-senior-web-solutions-engineer-fullstack-tampi-partnership-systems-youtube",
@@ -1289,6 +1292,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/139403319364723398-senior-design-verification-engineer-gcpu",
    "https://www.google.com/about/careers/applications/jobs/results/139619748403913414-senior-silicon-validation-engineer-google-cloud",
    "https://www.google.com/about/careers/applications/jobs/results/139644065166566086-senior-soc-test-engineer-google-cloud",
+   "https://www.google.com/about/careers/applications/jobs/results/139790514961425094-product-manager-ii",
    "https://www.google.com/about/careers/applications/jobs/results/139947272677794502-tech-lead-manager-merchant-shopping-aiml-insights-and-growth",
    "https://www.google.com/about/careers/applications/jobs/results/140056500138582726-staff-cpu-architecture-and-performance-architect",
    "https://www.google.com/about/careers/applications/jobs/results/140436546762220230-data-center-facilities-technician-mechanical",
@@ -1312,6 +1316,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/73724374531613382-software-engineer-ii-emergent-ai-infrastructure-google-cloud",
    "https://www.google.com/about/careers/applications/jobs/results/73906684350603974-asic-cad-ip-engineer-cloud-tpu",
    "https://www.google.com/about/careers/applications/jobs/results/74264784496665286-software-engineer-ii-onprem-aitpu-infrastructure-google-cloud",
+   "https://www.google.com/about/careers/applications/jobs/results/74753302666846918-staff-software-engineer-site-reliability-engineering",
    "https://www.google.com/about/careers/applications/jobs/results/74838312686101190-silicon-rtl-design-engineer-phd-google-cloud",
    "https://www.google.com/about/careers/applications/jobs/results/74914971678319302-physical-design-technical-lead-asic-tpu",
    "https://www.google.com/about/careers/applications/jobs/results/75050832499745478-senior-soc-dft-engineer-google-cloud",
@@ -2674,7 +2679,8 @@
    "893398922868",
    "893398922934",
    "893398922940",
-   "893398922948"
+   "893398922948",
+   "893398927037"
   ],
   "OpenAI": [
    "00207abc-49b7-465c-a219-f7c1140f8047",
@@ -5185,6 +5191,7 @@
    "10502826": "Post-Silicon Systems Validation Engineer I, Annapurna Labs",
    "10507266": "Senior FPGA Engineer, Payload Hardware Development, Leo PAA Hardware",
    "10507605": "Sr. Manager, Physical Design Engineering, Annapurna Labs",
+   "10515427": "Design Verification Engineer, Annapurna Labs",
    "10517013": "Senior Hardware Development Engineer, Cloud AI/ML Server Team",
    "10517535": "ASIC Engineer Intern, Annapurna Labs - 2027",
    "10517567": "Software Development Engineer Intern, Annapurna Labs - 2027",
@@ -5515,7 +5522,8 @@
    "https://jobs.apple.com/en-us/details/200696469-3715/software-engineer-data-solutions-is-t-ai-data-platforms?team=SFTWR": "Software Engineer (Data Solutions), IS&T Ai & Data Platforms",
    "https://jobs.apple.com/en-us/details/200696475-1052/senior-software-qa-engineer-find-my?team=SFTWR": "Senior Software QA Engineer \u2014 Find My",
    "https://jobs.apple.com/en-us/details/200696484-0865/camera-hardware-engineering-program-manager?team=HRDWR": "Camera Hardware Engineering Program Manager",
-   "https://jobs.apple.com/en-us/details/200696537-6205/asic-design-integration-engineer-pixel-ip?team=HRDWR": "ASIC Design & Integration Engineer - Pixel IP"
+   "https://jobs.apple.com/en-us/details/200696537-6205/asic-design-integration-engineer-pixel-ip?team=HRDWR": "ASIC Design & Integration Engineer - Pixel IP",
+   "https://jobs.apple.com/en-us/details/200696582-3715/software-engineer-data-services-is-t-ai-data-platforms?team=SFTWR": "Software Engineer, Data Services, IS&T Ai & Data Platforms"
   },
   "Arm": {
    "https://careers.arm.com/job/austin/memory-controller-performance-architect/33099/100445444208": "Memory Controller Performance Architect",
@@ -5992,6 +6000,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/112850349777134278-analyst-trust-and-safety-ads-content-safety": "Analyst, Trust and Safety, Ads Content Safety",
    "https://www.google.com/about/careers/applications/jobs/results/112980023429735110-staff-software-systems-engineer-companion-robots-deepmind": "Staff Software Systems Engineer, Companion Robots, DeepMind",
    "https://www.google.com/about/careers/applications/jobs/results/112992800957440710-senior-tpu-validation-engineer": "Senior TPU Validation Engineer",
+   "https://www.google.com/about/careers/applications/jobs/results/113069083871584966-edgeai-soc-verification-technical-lead-google-cloud": "Edge-AI SoC Verification Technical Lead, Google Cloud",
    "https://www.google.com/about/careers/applications/jobs/results/113095953186988742-data-engineer": "Data Engineer",
    "https://www.google.com/about/careers/applications/jobs/results/113686390931104454-strategic-cloud-engineer-data-analytics": "Strategic Cloud Engineer, Data Analytics",
    "https://www.google.com/about/careers/applications/jobs/results/113854624800088774-staff-software-engineer-site-reliability-engineering-caching-sre": "Staff Software Engineer, Site Reliability Engineering, Caching SRE",
@@ -6016,6 +6025,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/124168182649758406-board-design-manager": "Board Design Manager",
    "https://www.google.com/about/careers/applications/jobs/results/124960405205197510-rtl-design-engineer-silicon-engineering": "RTL Design Engineer, Silicon Engineering",
    "https://www.google.com/about/careers/applications/jobs/results/125068535301841606-forward-deployed-engineer-genai-mandarin-english": "Forward Deployed Engineer, GenAI (Mandarin, English)",
+   "https://www.google.com/about/careers/applications/jobs/results/125395708730581702-data-engineer": "Data Engineer",
    "https://www.google.com/about/careers/applications/jobs/results/125438658403541702-senior-software-engineer-bigquery-agentic-ai": "Senior Software Engineer, BigQuery Agentic AI",
    "https://www.google.com/about/careers/applications/jobs/results/126457965812032198-soc-quality-and-reliability-test-engineer-google-cloud": "SOC Quality and Reliability Test Engineer, Google Cloud",
    "https://www.google.com/about/careers/applications/jobs/results/127244477403144902-product-solutions-engineer-measurement-english-spanish": "Product Solutions Engineer, Measurement (English, Spanish)",
@@ -6047,6 +6057,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/139403319364723398-senior-design-verification-engineer-gcpu": "Senior Design Verification Engineer, gCPU",
    "https://www.google.com/about/careers/applications/jobs/results/139619748403913414-senior-silicon-validation-engineer-google-cloud": "Senior Silicon Validation Engineer, Google Cloud",
    "https://www.google.com/about/careers/applications/jobs/results/139644065166566086-senior-soc-test-engineer-google-cloud": "Senior SoC Test Engineer, Google Cloud",
+   "https://www.google.com/about/careers/applications/jobs/results/139790514961425094-product-manager-ii": "Product Manager II",
    "https://www.google.com/about/careers/applications/jobs/results/140056500138582726-staff-cpu-architecture-and-performance-architect": "Staff CPU Architecture and Performance Architect",
    "https://www.google.com/about/careers/applications/jobs/results/140935063616266950-soc-test-automation-and-infrastructure-lead-google-cloud": "SoC Test Automation and Infrastructure Lead, Google Cloud",
    "https://www.google.com/about/careers/applications/jobs/results/141036338945106630-staff-software-engineer-genai-video-creation-and-dubbing-youtube-ads": "Staff Software Engineer, GenAI Video Creation and Dubbing, YouTube Ads",
@@ -6056,6 +6067,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/142636280834859718-data-center-operations-manager-cscs-deployments": "Data Center Operations Manager, CSCS Deployments",
    "https://www.google.com/about/careers/applications/jobs/results/73298580063822534-senior-software-engineer-cloud-networking-hybrid-connectivity": "Senior Software Engineer, Cloud Networking, Hybrid Connectivity",
    "https://www.google.com/about/careers/applications/jobs/results/73329546778026694-product-deployment-engineer-gtech-ads-lcs": "Product Deployment Engineer, gTech Ads LCS",
+   "https://www.google.com/about/careers/applications/jobs/results/74753302666846918-staff-software-engineer-site-reliability-engineering": "Staff Software Engineer, Site Reliability Engineering",
    "https://www.google.com/about/careers/applications/jobs/results/75134352165348038-staff-software-engineer-display-test-raxium": "Staff Software Engineer, Display Test, Raxium",
    "https://www.google.com/about/careers/applications/jobs/results/75321681458930374-senior-ux-quantitative-researcher-search-ads": "Senior UX Quantitative Researcher, Search Ads",
    "https://www.google.com/about/careers/applications/jobs/results/75542028313600710-senior-dft-designmicro-architect-engineer-google-cloud": "Senior DFT Design/Micro architect Engineer, Google Cloud",
@@ -7103,7 +7115,8 @@
    "893398922868": "Senior Technical Trainer and Content Developer, AI Compute Systems",
    "893398922934": "Mixed Signal Circuit Designer (RDSS Intern)",
    "893398922940": "Senior Systems Software Engineer - Chromium Engineering For GeForce Now",
-   "893398922948": "Senior Software Safety Engineer - Halos Solutions"
+   "893398922948": "Senior Software Safety Engineer - Halos Solutions",
+   "893398927037": "Senior Software Engineer, Real-Time Data Platform"
   },
   "OpenAI": {
    "00207abc-49b7-465c-a219-f7c1140f8047": "Forward Deployed Software Engineer - SF",
