@@ -2938,7 +2938,8 @@
    "893398922948",
    "893398927037",
    "893398927078",
-   "893398927080"
+   "893398927080",
+   "893398934401"
   ],
   "OpenAI": [
    "00207abc-49b7-465c-a219-f7c1140f8047",
@@ -3287,6 +3288,7 @@
    "5f6685ad-2fba-4e60-8982-fa142b33e194",
    "60089c12-762c-4369-9a7c-94f8959343a3",
    "60573bf4-13ad-4933-aba7-729f428e9f69",
+   "607078a7-0b16-4615-8d5b-55c89853d3ff",
    "60f8bcbc-3ca5-42f4-a73b-e864a6340a16",
    "616ef2ce-3790-432d-9a6d-32abb2f52ff9",
    "6202038a-323b-43ce-ae10-534acba4145c",
@@ -4638,7 +4640,9 @@
    "5302697007",
    "5303225007",
    "5303463007",
-   "5307121007"
+   "5307121007",
+   "5307322007",
+   "5307365007"
   ],
   "Waymo": [
    "6499165",
@@ -4991,6 +4995,7 @@
    "8375524",
    "8380137",
    "8380173",
+   "8380693",
    "8381008",
    "8383986",
    "8386398",
@@ -7719,7 +7724,8 @@
    "893398922948": "Senior Software Safety Engineer - Halos Solutions",
    "893398927037": "Senior Software Engineer, Real-Time Data Platform",
    "893398927078": "Senior Technical Trainer and Content Developer, AI Data Centers",
-   "893398927080": "Senior Technical Trainer and Content Developer, AI Compute Systems"
+   "893398927080": "Senior Technical Trainer and Content Developer, AI Compute Systems",
+   "893398934401": "Senior RTL Analysis Methodology Engineer"
   },
   "OpenAI": {
    "00207abc-49b7-465c-a219-f7c1140f8047": "Forward Deployed Software Engineer - SF",
@@ -8060,6 +8066,7 @@
    "5f6685ad-2fba-4e60-8982-fa142b33e194": "Frontend Software Engineer, Codex App",
    "60089c12-762c-4369-9a7c-94f8959343a3": "Cyber Operations Lead, Critical Harm Operations",
    "60573bf4-13ad-4933-aba7-729f428e9f69": "Control Systems Software Engineer, Robotics",
+   "607078a7-0b16-4615-8d5b-55c89853d3ff": "Business Development Lead, Compute Strategy & Partnerships",
    "60f8bcbc-3ca5-42f4-a73b-e864a6340a16": "Full Stack Software Engineer, DotCom",
    "616ef2ce-3790-432d-9a6d-32abb2f52ff9": "Platform Operations Program Manager",
    "6202038a-323b-43ce-ae10-534acba4145c": "Android Engineer, Applied Foundations ",
@@ -8199,7 +8206,7 @@
    "88d4dce1-a3ef-495f-b711-54988812336b": "Account Director, Federal Partnerships (Defense)",
    "88db99b3-9689-43d1-9223-215be81a0c02": "AI Deployment Manager (Spanish- and Portuguese-Speaking)",
    "88e65467-7e19-4164-a1de-1d49d3f2dd52": "Mechanical Engineer, PCBA Test Infrastructure, Robotics",
-   "894ba35c-c6b6-4cf0-9451-f996aa695e49": "Product Marketing Manager, SMB, Verticals & Partner Ecosystem",
+   "894ba35c-c6b6-4cf0-9451-f996aa695e49": "Product Marketing Manager, SMB",
    "8960d7b6-b345-478f-a5ad-67beaa32f425": "Product Marketing Lead, Healthcare & Life Sciences",
    "89959eee-bd3a-4564-9c47-e4771c6c1e0f": "Product Manager, ChatGPT Business Growth",
    "89d61ae8-1ce1-4187-9edd-da8029979e41": "Forward Deployed Security Engineer",
@@ -9251,7 +9258,9 @@
    "5302697007": "Technical Program Manager, Silicon Enablement and System Software ",
    "5303225007": "Technical Program Manager, Systems Enablement - AI Systems",
    "5303463007": "Director, Business Development - EMEA",
-   "5307121007": "Package Design Engineer "
+   "5307121007": "Package Design Engineer ",
+   "5307322007": "CAD Infra Engineer",
+   "5307365007": "Physical Design Engineer - STA"
   },
   "Waymo": {
    "6499165": "Machine Learning Engineer, Simulation Realism",
@@ -9598,6 +9607,7 @@
    "8375524": "Vehicle Outbound Logistics Manager, UK",
    "8380137": "Senior Machine Learning Engineer, Driver Refinement & Validation",
    "8380173": "Senior Signal Integrity and Power Integrity Engineer",
+   "8380693": "Senior Financial Analyst",
    "8381008": "Construction Project Specialist, Europe",
    "8383986": "Vehicle Outbound Logistics Manager, APAC / \u8eca\u4e21\u30a2\u30a6\u30c8\u30d0\u30a6\u30f3\u30c9\u7269\u6d41\u30de\u30cd\u30fc\u30b8\u30e3\u30fc\uff08APAC)",
    "8386398": "Senior Software Engineer, Agentic Test Systems",
