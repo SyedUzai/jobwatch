@@ -764,6 +764,7 @@
    "https://jobs.apple.com/en-us/details/200696477-2114/associate-platform-specialist-global-enterprise-accounts?team=SLDEV",
    "https://jobs.apple.com/en-us/details/200696484-0865/camera-hardware-engineering-program-manager?team=HRDWR",
    "https://jobs.apple.com/en-us/details/200696537-6205/asic-design-integration-engineer-pixel-ip?team=HRDWR",
+   "https://jobs.apple.com/en-us/details/200696554-6401/apple-channel-store-advisor-wilrijk?team=SLDEV",
    "https://jobs.apple.com/en-us/details/200696582-3715/software-engineer-data-services-is-t-ai-data-platforms?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200696630-3957/account-manager-apple-news-ad-sales-uk-au?team=SLDEV"
   ],
@@ -2111,6 +2112,7 @@
    "/job/San-Diego-CA/Manager--Trade-Shows_2605345",
    "/job/San-Diego-CA/Sr-Staff-Manager--Brand-Architecture---Governance_2605346",
    "/job/Santa-Clara-CA/Accounting-Intern--BS---Summer-2027_2604214-1",
+   "/job/Santa-Clara-CA/Applied-AI-ML-Research-Scientist-Intern_2603847-1",
    "/job/Santa-Clara-CA/Director--Hospitality--Events---Travel_2605416",
    "/job/Santa-Clara-CA/ERM-Program-Manager_2604757",
    "/job/Santa-Clara-CA/Executive-Travel-Manager_2604808-1",
@@ -4272,6 +4274,7 @@
    "f873dd71-46c9-4be1-8580-bc67c56b4cad",
    "f8b84ae5-743b-41c9-8432-02dff9993d6b",
    "f93ed20a-4a1c-43b4-895f-0830cdac6737",
+   "f9818cd7-66b3-4d68-a354-868ea1ce976e",
    "fa49d49e-0a9b-4927-898e-2e3faa6be981",
    "fa5114ae-c6ff-4bbd-9e21-5dcfafd032f7",
    "faaf4418-8fea-4781-95b7-8cfc40f8c818",
@@ -4805,6 +4808,7 @@
    "https://careers.rivian.com/careers-home/jobs/37688?lang=en-us&previousLocale=en-US",
    "https://careers.rivian.com/careers-home/jobs/38065?lang=en-us&previousLocale=en-US",
    "https://careers.rivian.com/careers-home/jobs/38305?lang=en-us&previousLocale=en-US",
+   "https://careers.rivian.com/careers-home/jobs/38461?lang=en-us&previousLocale=en-US",
    "https://mx-careers-rivian.icims.com/jobs/37273/login",
    "https://sb-careers-rivian.icims.com/jobs/31332/login",
    "https://sb-careers-rivian.icims.com/jobs/35800/login",
@@ -4896,7 +4900,8 @@
    "https://us-careers-rivian.icims.com/jobs/37637/login",
    "https://us-careers-rivian.icims.com/jobs/37688/login",
    "https://us-careers-rivian.icims.com/jobs/38065/login",
-   "https://us-careers-rivian.icims.com/jobs/38305/login"
+   "https://us-careers-rivian.icims.com/jobs/38305/login",
+   "https://us-careers-rivian.icims.com/jobs/38461/login"
   ],
   "SambaNova": [
    "https://sambanova.ai/company/careers/job-openings"
@@ -6545,6 +6550,7 @@
    "https://jobs.apple.com/en-us/details/200696477-2114/associate-platform-specialist-global-enterprise-accounts?team=SLDEV": "Associate Platform Specialist - Global Enterprise Accounts",
    "https://jobs.apple.com/en-us/details/200696484-0865/camera-hardware-engineering-program-manager?team=HRDWR": "Camera Hardware Engineering Program Manager",
    "https://jobs.apple.com/en-us/details/200696537-6205/asic-design-integration-engineer-pixel-ip?team=HRDWR": "ASIC Design & Integration Engineer - Pixel IP",
+   "https://jobs.apple.com/en-us/details/200696554-6401/apple-channel-store-advisor-wilrijk?team=SLDEV": "Apple Channel Store Advisor, Wilrijk",
    "https://jobs.apple.com/en-us/details/200696582-3715/software-engineer-data-services-is-t-ai-data-platforms?team=SFTWR": "Software Engineer, Data Services, IS&T Ai & Data Platforms",
    "https://jobs.apple.com/en-us/details/200696630-3957/account-manager-apple-news-ad-sales-uk-au?team=SLDEV": "Account Manager, Apple News Ad Sales, UK & AU"
   },
@@ -7722,6 +7728,7 @@
    "/job/San-Diego-CA/Director--Partner-Marketing_2605343": "Director, Partner Marketing",
    "/job/San-Diego-CA/Sr-Staff-Manager--Brand-Architecture---Governance_2605346": "Sr. Staff Manager, Brand Architecture & Governance",
    "/job/Santa-Clara-CA/Accounting-Intern--BS---Summer-2027_2604214-1": "Accounting Intern, BS - Summer 2027",
+   "/job/Santa-Clara-CA/Applied-AI-ML-Research-Scientist-Intern_2603847-1": "Applied AI/ML Research Scientist Intern",
    "/job/Santa-Clara-CA/Director--Hospitality--Events---Travel_2605416": "Director, Hospitality, Events & Travel",
    "/job/Santa-Clara-CA/ERM-Program-Manager_2604757": "ERM Program Manager",
    "/job/Santa-Clara-CA/FinOps---Technical-Cloud-Architect_2604766-1": "FinOps & Technical Cloud Architect",
@@ -9712,6 +9719,7 @@
    "f873dd71-46c9-4be1-8580-bc67c56b4cad": "Full-Stack Software Engineer, Applied Foundations",
    "f8b84ae5-743b-41c9-8432-02dff9993d6b": "Software Engineer, Model Deployment- ChatGPT Engineering",
    "f93ed20a-4a1c-43b4-895f-0830cdac6737": "Strategic Finance Generalist",
+   "f9818cd7-66b3-4d68-a354-868ea1ce976e": "Applied AI Architect, Large Enterprise",
    "fa49d49e-0a9b-4927-898e-2e3faa6be981": "Account Associate - Austin",
    "fa5114ae-c6ff-4bbd-9e21-5dcfafd032f7": "Lead, Ads Prospecting & Customer Intelligence",
    "faaf4418-8fea-4781-95b7-8cfc40f8c818": "Associate General Counsel, Security & National Security",
@@ -10154,6 +10162,7 @@
    "https://careers.rivian.com/careers-home/jobs/37688?lang=en-us&previousLocale=en-US": "Early Career - AI Platform, Autonomy",
    "https://careers.rivian.com/careers-home/jobs/38065?lang=en-us&previousLocale=en-US": "Manager, Service Material Planning",
    "https://careers.rivian.com/careers-home/jobs/38305?lang=en-us&previousLocale=en-US": "Test Operations Coordinator",
+   "https://careers.rivian.com/careers-home/jobs/38461?lang=en-us&previousLocale=en-US": "Sr. Field Service Technician - Night Shift - Orlando, FL",
    "https://mx-careers-rivian.icims.com/jobs/37273/login": "Senior Supplier Development, Industrialization & Quality Engineer - Seats & Safety",
    "https://sb-careers-rivian.icims.com/jobs/31332/login": "Staff Software Engineer, Charging",
    "https://sb-careers-rivian.icims.com/jobs/35800/login": "Sr. Power Electronics Controls Engineer",
@@ -10231,7 +10240,8 @@
    "https://us-careers-rivian.icims.com/jobs/37637/login": "Sr. Manager, Manufacturing Engineering - Workplace Integration (General Assembly)",
    "https://us-careers-rivian.icims.com/jobs/37688/login": "Early Career - AI Platform, Autonomy",
    "https://us-careers-rivian.icims.com/jobs/38065/login": "Manager, Service Material Planning",
-   "https://us-careers-rivian.icims.com/jobs/38305/login": "Test Operations Coordinator"
+   "https://us-careers-rivian.icims.com/jobs/38305/login": "Test Operations Coordinator",
+   "https://us-careers-rivian.icims.com/jobs/38461/login": "Sr. Field Service Technician - Night Shift - Orlando, FL"
   },
   "Samsung": {
    "/job/12100-Samsung-Blvd-Austin-TX-USA/C2C-Bonding-Engineer_R119383-1": "Hybrid C2C  - BEOL Module Integration Engineer",
