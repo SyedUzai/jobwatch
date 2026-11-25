@@ -5904,8 +5904,8 @@
    "https://careers.amd.com/careers-home/jobs/102596?lang=en-us": "Memory Validation Lead \u2013 GPU/CPU",
    "https://careers.amd.com/careers-home/jobs/102990?lang=en-us": "PNR CAD DESIGN ENGINEER",
    "https://careers.amd.com/careers-home/jobs/103057?lang=en-us": "Silicon Design Engineer - Analog IO",
-   "https://careers.amd.com/careers-home/jobs/103688?lang=en-us": "2027 Term 2 Internship - Core Complex (CCX) Diagnostic Test Intern",
-   "https://careers.amd.com/careers-home/jobs/103689?lang=en-us": "2027 Term 2 Internship - IC Design Exploration Intern",
+   "https://careers.amd.com/careers-home/jobs/103688?lang=en-us": "2027 Term 2 Internship - Core Complex (CCX) Diagnostic Test",
+   "https://careers.amd.com/careers-home/jobs/103689?lang=en-us": "2027 Term 2 Internship - IC Design Exploration",
    "https://careers.amd.com/careers-home/jobs/86851?lang=en-us": "Principal Cache RTL Design - CPU Team",
    "https://careers.amd.com/careers-home/jobs/86897?lang=en-us": "SOC CAD Engineer",
    "https://careers.amd.com/careers-home/jobs/89557?lang=en-us": "Spring/Summer 2027 Masters AI Rack & Cluster Thermal Engineering Co-Op",
@@ -5999,8 +5999,8 @@
    "https://global-external-amd.icims.com/jobs/98700/login": "Staff IT Engineer",
    "https://global-external-amd.icims.com/jobs/99096/login": "x86 BIOS/UEFI/Coreboot Developer",
    "https://global-external-amd.icims.com/jobs/99162/login": "x86 Power-management firmware Developer",
-   "https://globalcampus-amd.icims.com/jobs/103688/login": "2027 Term 2 Internship - Core Complex (CCX) Diagnostic Test Intern",
-   "https://globalcampus-amd.icims.com/jobs/103689/login": "2027 Term 2 Internship - IC Design Exploration Intern"
+   "https://globalcampus-amd.icims.com/jobs/103688/login": "2027 Term 2 Internship - Core Complex (CCX) Diagnostic Test",
+   "https://globalcampus-amd.icims.com/jobs/103689/login": "2027 Term 2 Internship - IC Design Exploration"
   },
   "Amazon / Annapurna": {
    "10375238": "Senior AI SoC Modeling Engineer, Annapurna Labs Machine Learning Accelerators, AWS",
