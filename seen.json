@@ -1,6 +1,6 @@
 {
  "failures": {
-  "Apple": 1,
+  "Apple": 2,
   "SambaNova": 6,
   "Tesla": 6
  },
@@ -1552,6 +1552,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/82927011978191558-it-infrastructure-engineer-ii-technicien-systmes-et-rseaux",
    "https://www.google.com/about/careers/applications/jobs/results/82989677698523846-senior-software-engineer-machine-learning-applied-ai",
    "https://www.google.com/about/careers/applications/jobs/results/83132208335725254-senior-design-verification-engineer-google-cloud",
+   "https://www.google.com/about/careers/applications/jobs/results/83217944472888006-principal-architect-financial-services-google-cloud-spanish-english",
    "https://www.google.com/about/careers/applications/jobs/results/83252192542106310-product-manager-youtube-creation-platform",
    "https://www.google.com/about/careers/applications/jobs/results/83330919292641990-senior-software-engineer-infrastructuredrive-processing",
    "https://www.google.com/about/careers/applications/jobs/results/83421784962933446-silicon-validation-engineer",
@@ -3011,6 +3012,7 @@
    "893396750302",
    "893396778280",
    "893396778492",
+   "893396778493",
    "893396795783",
    "893396823540",
    "893396838352",
@@ -7145,6 +7147,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/82861178719478470-senior-fpga-engineer-neutral-atoms-control-quantum-ai": "Senior FPGA Engineer, Neutral Atoms Control, Quantum AI",
    "https://www.google.com/about/careers/applications/jobs/results/82927011978191558-it-infrastructure-engineer-ii-technicien-systmes-et-rseaux": "IT Infrastructure Engineer II (Technicien Syst\u00e8mes et R\u00e9seaux)",
    "https://www.google.com/about/careers/applications/jobs/results/83132208335725254-senior-design-verification-engineer-google-cloud": "Senior Design Verification Engineer, Google Cloud",
+   "https://www.google.com/about/careers/applications/jobs/results/83217944472888006-principal-architect-financial-services-google-cloud-spanish-english": "Principal Architect, Financial Services, Google Cloud (Spanish, English)",
    "https://www.google.com/about/careers/applications/jobs/results/83330919292641990-senior-software-engineer-infrastructuredrive-processing": "Senior Software Engineer, Infrastructure-Drive Processing",
    "https://www.google.com/about/careers/applications/jobs/results/83421784962933446-silicon-validation-engineer": "Silicon Validation Engineer",
    "https://www.google.com/about/careers/applications/jobs/results/83624643516080838-software-engineer-ii-google-cloud": "Software Engineer II, Google Cloud",
@@ -8392,6 +8395,7 @@
    "893396750302": "Package Design Methodology Engineer",
    "893396778280": "Senior Manager, Post-Silicon Bring-Up",
    "893396778492": "Distinguished Engineer, End-to-End Scaling Performance Architecture",
+   "893396778493": "Chip Design Engineer",
    "893396795783": "Senior Customer Success Engineer - DGX Cloud",
    "893396823540": "Senior Hardware System Design Engineer",
    "893396838352": "Senior Software Engineer, Embedded Platform Middleware \u2014 Automotive and Robotics",
