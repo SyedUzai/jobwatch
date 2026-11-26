@@ -781,6 +781,7 @@
    "https://jobs.apple.com/en-us/details/200696134-0157/cpu-implementation-methodology-engineer?team=HRDWR",
    "https://jobs.apple.com/en-us/details/200696161-2114/emeia-consulting-engineer-ai-ml?team=MLAI",
    "https://jobs.apple.com/en-us/details/200696170-3435/greater-china-polymer-engineer?team=HRDWR",
+   "https://jobs.apple.com/en-us/details/200696173-3541/manufacturing-design-engineer-chennai?team=OPMFG",
    "https://jobs.apple.com/en-us/details/200696217-1731/head-of-original-content-apple-tv-germany?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200696246-3956/senior-computer-vision-machine-learning-engineer?team=MLAI",
    "https://jobs.apple.com/en-us/details/200696249-3956/machine-learning-engineer-computer-vision-for-people-understanding?team=HRDWR",
@@ -865,6 +866,7 @@
    "https://careers.arm.com/job/bengaluru/staff-post-silicon-ddr-characterization-engineer/33099/102765793216",
    "https://careers.arm.com/job/bengaluru/staff-post-silicon-pcie-char-validation-engineer/33099/103372992720",
    "https://careers.arm.com/job/bengaluru/staff-principal-engineer-multi-die-advanced-tech-ppa-methodology-automation/33099/100792380384",
+   "https://careers.arm.com/job/bengaluru/staff-principal-verification-engineer/33099/103376760864",
    "https://careers.arm.com/job/bengaluru/staff-soc-verification-engineer/33099/99055494912",
    "https://careers.arm.com/job/bengaluru/staff-software-engineer/33099/100980907456",
    "https://careers.arm.com/job/bengaluru/staff-structural-test-verification-simulation-engineer/33099/102150199088",
@@ -1647,6 +1649,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/76410318229512902-member-of-technical-staff-ai-studio-deepmind",
    "https://www.google.com/about/careers/applications/jobs/results/76486072862679750-data-cloud-sales-specialist-manager-iii-retail-google-cloud",
    "https://www.google.com/about/careers/applications/jobs/results/76577718874841798-research-scientist",
+   "https://www.google.com/about/careers/applications/jobs/results/76584247225131718-senior-gpu-performance-software-engineer-aiml",
    "https://www.google.com/about/careers/applications/jobs/results/76620578353488582-senior-director-global-carrier-and-partner-engineering",
    "https://www.google.com/about/careers/applications/jobs/results/76722708380820166-lead-group-product-manager-search-logs-data-platform",
    "https://www.google.com/about/careers/applications/jobs/results/76843534400791238-tpu-hardware-design-engineer-cloud",
@@ -1970,6 +1973,7 @@
    "/job/US-Arizona-Phoenix/Assembly-and-Test-Commodity-Manager_JR0284805",
    "/job/US-Arizona-Phoenix/Construction-Project-Engineer--Civil--Structural--Architectural-_JR0287556",
    "/job/US-Arizona-Phoenix/Construction-Project-Manager---UPW-PM_JR0289584",
+   "/job/US-Arizona-Phoenix/Data-Scientist-Statistician_JR0283881",
    "/job/US-Arizona-Phoenix/Database-Administrator-PL-SQL-Developer_JR0286800",
    "/job/US-Arizona-Phoenix/Design-Manager---Global-Construction-Engineering--GCE-_JR0289474",
    "/job/US-Arizona-Phoenix/E2E-Supply-Planning-Integrator_JR0289616",
@@ -2102,7 +2106,8 @@
    "/job/Vietnam-Ho_Chi_Minh_City/Failure-Analysis-Engineering_JR0289619-1",
    "/job/Vietnam-Ho_Chi_Minh_City/Module-Engineer-within-Test-Engineering-Department_JR0289668",
    "/job/Vietnam-Ho_Chi_Minh_City/NPI-Technical-Program-Manager_JR0289593",
-   "/job/Virtual-US/Partner-Marketing-Manager_JR0287636"
+   "/job/Virtual-US/Partner-Marketing-Manager_JR0287636",
+   "/job/Virtual-United-Kingdom/Sales-Pricing-Manager_JR0289572-1"
   ],
   "Lightmatter": [
    "4418732008",
@@ -7307,6 +7312,7 @@
    "https://jobs.apple.com/en-us/details/200696134-0157/cpu-implementation-methodology-engineer?team=HRDWR": "CPU Implementation Methodology Engineer",
    "https://jobs.apple.com/en-us/details/200696161-2114/emeia-consulting-engineer-ai-ml?team=MLAI": "EMEIA Consulting Engineer \u2013 AI/ML",
    "https://jobs.apple.com/en-us/details/200696170-3435/greater-china-polymer-engineer?team=HRDWR": "Greater China Polymer Engineer",
+   "https://jobs.apple.com/en-us/details/200696173-3541/manufacturing-design-engineer-chennai?team=OPMFG": "Manufacturing Design Engineer - Chennai",
    "https://jobs.apple.com/en-us/details/200696217-1731/head-of-original-content-apple-tv-germany?team=SFTWR": "Head of Original Content - Apple TV (Germany)",
    "https://jobs.apple.com/en-us/details/200696246-3956/senior-computer-vision-machine-learning-engineer?team=MLAI": "Senior Computer Vision & Machine Learning Engineer",
    "https://jobs.apple.com/en-us/details/200696251-0836/software-engineer-embedded-software?team=HRDWR": "Software Engineer, Embedded Software",
@@ -7384,6 +7390,7 @@
    "https://careers.arm.com/job/bengaluru/staff-post-silicon-ddr-characterization-engineer/33099/102765793216": "Staff Post-Silicon DDR Characterization Engineer",
    "https://careers.arm.com/job/bengaluru/staff-post-silicon-pcie-char-validation-engineer/33099/103372992720": "Staff Post-Silicon PCIe Char Validation Engineer",
    "https://careers.arm.com/job/bengaluru/staff-principal-engineer-multi-die-advanced-tech-ppa-methodology-automation/33099/100792380384": "Staff / Principal engineer -Multi-Die Advanced Tech PPA Methodology Automation",
+   "https://careers.arm.com/job/bengaluru/staff-principal-verification-engineer/33099/103376760864": "Staff/Principal Verification Engineer",
    "https://careers.arm.com/job/bengaluru/staff-soc-verification-engineer/33099/99055494912": "Staff SOC Verification Engineer",
    "https://careers.arm.com/job/bengaluru/staff-software-engineer/33099/100980907456": "Staff Software Engineer",
    "https://careers.arm.com/job/bengaluru/system-software-engineer-soc-validation/33099/101248979968": "System Software Engineer \u2013 SoC Validation",
@@ -8075,6 +8082,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/76000973486465734-physical-design-technical-lead-manager-global-clocking": "Physical Design Technical Lead Manager, Global Clocking",
    "https://www.google.com/about/careers/applications/jobs/results/76410318229512902-member-of-technical-staff-ai-studio-deepmind": "Member of Technical Staff, AI Studio, DeepMind",
    "https://www.google.com/about/careers/applications/jobs/results/76577718874841798-research-scientist": "Research Scientist",
+   "https://www.google.com/about/careers/applications/jobs/results/76584247225131718-senior-gpu-performance-software-engineer-aiml": "Senior GPU Performance Software Engineer, AI/ML",
    "https://www.google.com/about/careers/applications/jobs/results/76620578353488582-senior-director-global-carrier-and-partner-engineering": "Senior Director, Global Carrier and Partner Engineering",
    "https://www.google.com/about/careers/applications/jobs/results/76843534400791238-tpu-hardware-design-engineer-cloud": "TPU Hardware Design Engineer, Cloud",
    "https://www.google.com/about/careers/applications/jobs/results/76878529794319046-manager-technical-program-management-global-business-controls": "Manager, Technical Program Management, Global Business Controls",
@@ -8346,6 +8354,7 @@
    "/job/US-Arizona-Phoenix/Assembly-and-Test-Commodity-Manager_JR0284805": "Assembly and Test Commodity Manager",
    "/job/US-Arizona-Phoenix/Construction-Project-Engineer--Civil--Structural--Architectural-_JR0287556": "Construction Project Engineer (Civil, Structural, Architectural)",
    "/job/US-Arizona-Phoenix/Construction-Project-Manager---UPW-PM_JR0289584": "Construction Project Manager - UPW PM",
+   "/job/US-Arizona-Phoenix/Data-Scientist-Statistician_JR0283881": "Data Scientist/Statistician",
    "/job/US-Arizona-Phoenix/Database-Administrator-PL-SQL-Developer_JR0286800": "Database Administrator PL/SQL Developer",
    "/job/US-Arizona-Phoenix/Design-Manager---Global-Construction-Engineering--GCE-_JR0289474": "Design Manager - Global Construction Engineering (GCE)",
    "/job/US-Arizona-Phoenix/E2E-Supply-Planning-Integrator_JR0289616": "E2E Supply Planning Integrator",
@@ -8466,7 +8475,8 @@
    "/job/Vietnam-Ho_Chi_Minh_City/Failure-Analysis-Engineering_JR0289619-1": "Failure Analysis Engineering",
    "/job/Vietnam-Ho_Chi_Minh_City/Module-Engineer-within-Test-Engineering-Department_JR0289668": "Module Engineer within Test Engineering Department",
    "/job/Vietnam-Ho_Chi_Minh_City/NPI-Technical-Program-Manager_JR0289593": "NPI Technical Program Manager",
-   "/job/Virtual-US/Partner-Marketing-Manager_JR0287636": "Partner Marketing Manager"
+   "/job/Virtual-US/Partner-Marketing-Manager_JR0287636": "Partner Marketing Manager",
+   "/job/Virtual-United-Kingdom/Sales-Pricing-Manager_JR0289572-1": "Sales Pricing Manager"
   },
   "Lightmatter": {
    "4418732008": "Analog IC Design Engineer, High-Speed",
