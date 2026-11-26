@@ -812,6 +812,7 @@
    "https://jobs.apple.com/en-us/details/200696630-3957/account-manager-apple-news-ad-sales-uk-au?team=SLDEV",
    "https://jobs.apple.com/en-us/details/200696706-6526/apple-channel-store-advisor-utrecht-part-time?team=SLDEV",
    "https://jobs.apple.com/en-us/details/200696721-3715/strategic-engineering-program-manager-epm?team=HRDWR",
+   "https://jobs.apple.com/en-us/details/200696724-1052/sales-support-specialist-retail-customer-care?team=CUST",
    "https://jobs.apple.com/en-us/details/200696740-0215/internship-multilingual-multimodal-understanding-and-generation-global-siri?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200696800-0215/internship-agentic-data-generation-for-high-fidelity-personal-data-global-siri?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200696837-6482/account-executive-consumer-reseller-channel?team=SLDEV",
@@ -1429,6 +1430,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/111347764058563270-senior-test-engineer-cmos-backplane-raxium",
    "https://www.google.com/about/careers/applications/jobs/results/111448128854336198-data-engineer",
    "https://www.google.com/about/careers/applications/jobs/results/111518849785832134-power-delivery-design-engineer-google-cloud",
+   "https://www.google.com/about/careers/applications/jobs/results/111560884362322630-senior-software-engineer-infrastructure-google-cloud-platforms",
    "https://www.google.com/about/careers/applications/jobs/results/111711283144729286-design-verification-engineer-phd-early-career",
    "https://www.google.com/about/careers/applications/jobs/results/111756344297431750-cpu-rtl-design-engineer-datapath-and-execution-units",
    "https://www.google.com/about/careers/applications/jobs/results/111801896720573126-silicon-validation-engineer-google-cloud",
@@ -2288,6 +2290,7 @@
    "/job/Santa-Clara-CA/Vice-President--Custom-Silicon-Hardware-Engineering_2605539-1",
    "/job/Santa-Clara-CA/Vice-President--Program-Management---Custom-Silicon_2605495",
    "/job/Singapore/Accounting-Operation-Controller_2605549",
+   "/job/Singapore/IO-ESD-Intern----Bachelor-s-Degree_2603759",
    "/job/Singapore/OSAT-Operations-Senior-Staff-Planner_2603940",
    "/job/Singapore/Principal-Analog-IC-Design-Engineer_2605310",
    "/job/Singapore/Product-Engineering--Principal-Engineer_2603639",
@@ -3930,7 +3933,8 @@
    "893398956315",
    "893398956631",
    "893398957544",
-   "893398957613"
+   "893398957613",
+   "893398972095"
   ],
   "OpenAI": [
    "00207abc-49b7-465c-a219-f7c1140f8047",
@@ -7271,6 +7275,7 @@
    "https://jobs.apple.com/en-us/details/200696630-3957/account-manager-apple-news-ad-sales-uk-au?team=SLDEV": "Account Manager, Apple News Ad Sales, UK & AU",
    "https://jobs.apple.com/en-us/details/200696706-6526/apple-channel-store-advisor-utrecht-part-time?team=SLDEV": "Apple Channel Store Advisor, Utrecht (Part-time)",
    "https://jobs.apple.com/en-us/details/200696721-3715/strategic-engineering-program-manager-epm?team=HRDWR": "Strategic Engineering Program Manager (EPM)",
+   "https://jobs.apple.com/en-us/details/200696724-1052/sales-support-specialist-retail-customer-care?team=CUST": "Sales Support Specialist, Retail Customer Care",
    "https://jobs.apple.com/en-us/details/200696740-0215/internship-multilingual-multimodal-understanding-and-generation-global-siri?team=SFTWR": "Internship - Multilingual & Multimodal Understanding and Generation, Global Siri",
    "https://jobs.apple.com/en-us/details/200696800-0215/internship-agentic-data-generation-for-high-fidelity-personal-data-global-siri?team=SFTWR": "Internship - Agentic Data Generation for High-Fidelity Personal Data, Global Siri",
    "https://jobs.apple.com/en-us/details/200696837-6482/account-executive-consumer-reseller-channel?team=SLDEV": "Account Executive \u2013 Consumer Reseller Channel",
@@ -7848,6 +7853,7 @@
    "https://www.google.com/about/careers/applications/jobs/results/111199141010252486-product-manager-ii-android-xr-platform-hardware": "Product Manager II, Android XR Platform Hardware",
    "https://www.google.com/about/careers/applications/jobs/results/111448128854336198-data-engineer": "Data Engineer",
    "https://www.google.com/about/careers/applications/jobs/results/111518849785832134-power-delivery-design-engineer-google-cloud": "Power Delivery Design Engineer, Google Cloud",
+   "https://www.google.com/about/careers/applications/jobs/results/111560884362322630-senior-software-engineer-infrastructure-google-cloud-platforms": "Senior Software Engineer, Infrastructure, Google Cloud Platforms",
    "https://www.google.com/about/careers/applications/jobs/results/111756344297431750-cpu-rtl-design-engineer-datapath-and-execution-units": "CPU RTL Design Engineer, Datapath and Execution Units",
    "https://www.google.com/about/careers/applications/jobs/results/111801896720573126-silicon-validation-engineer-google-cloud": "Silicon Validation Engineer, Google Cloud",
    "https://www.google.com/about/careers/applications/jobs/results/111822045754335942-senior-dft-designmicro-architect-engineer-google-cloud": "Senior DFT Design/Micro Architect Engineer, Google Cloud",
@@ -8576,6 +8582,7 @@
    "/job/Santa-Clara-CA/Vice-President--Custom-Silicon-Hardware-Engineering_2605539-1": "Vice President, Custom Silicon Hardware Engineering",
    "/job/Santa-Clara-CA/Vice-President--Program-Management---Custom-Silicon_2605495": "Vice President, Program Management - Custom Silicon",
    "/job/Singapore/Accounting-Operation-Controller_2605549": "Accounting Operation Controller",
+   "/job/Singapore/IO-ESD-Intern----Bachelor-s-Degree_2603759": "IO ESD Intern -  Bachelor's Degree Summer 2027",
    "/job/Singapore/OSAT-Operations-Senior-Staff-Planner_2603940": "OSAT Operations Senior Staff Planner",
    "/job/Singapore/Principal-Analog-IC-Design-Engineer_2605310": "Principal Analog IC Design Engineer",
    "/job/Singapore/Product-Engineering--Principal-Engineer_2603639": "Senior Staff Product Engineer",
@@ -10091,7 +10098,8 @@
    "893398956315": "Senior Package Layout Engineer - Hardware",
    "893398956631": "Software Networking Engineer",
    "893398957544": "Senior Manager, Silicon Bring-Up and Productization",
-   "893398957613": "Senior System Software Engineer - AV Platform"
+   "893398957613": "Senior System Software Engineer - AV Platform",
+   "893398972095": "AI Infrastructure Engineer - NVIS"
   },
   "OpenAI": {
    "00207abc-49b7-465c-a219-f7c1140f8047": "Forward Deployed Software Engineer - SF",
