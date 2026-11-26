@@ -270,6 +270,7 @@
    "https://careers.amd.com/careers-home/jobs/86851?lang=en-us",
    "https://careers.amd.com/careers-home/jobs/86897?lang=en-us",
    "https://careers.amd.com/careers-home/jobs/87968?lang=en-us",
+   "https://careers.amd.com/careers-home/jobs/89497?lang=en-us",
    "https://careers.amd.com/careers-home/jobs/89557?lang=en-us",
    "https://careers.amd.com/careers-home/jobs/89564?lang=en-us",
    "https://careers.amd.com/careers-home/jobs/89816?lang=en-us",
@@ -364,6 +365,7 @@
    "https://global-external-amd.icims.com/jobs/103057/login",
    "https://global-external-amd.icims.com/jobs/86851/login",
    "https://global-external-amd.icims.com/jobs/87968/login",
+   "https://global-external-amd.icims.com/jobs/89497/login",
    "https://global-external-amd.icims.com/jobs/90935/login",
    "https://global-external-amd.icims.com/jobs/91465/login",
    "https://global-external-amd.icims.com/jobs/92515/login",
@@ -5276,7 +5278,8 @@
    "https://careers.qualcomm.com/careers/job/446722354020",
    "https://careers.qualcomm.com/careers/job/446722355698",
    "https://careers.qualcomm.com/careers/job/446722356101",
-   "https://careers.qualcomm.com/careers/job/446722362956"
+   "https://careers.qualcomm.com/careers/job/446722362956",
+   "https://careers.qualcomm.com/careers/job/446722366373"
   ],
   "Rivian": [
    "https://careers.rivian.com/careers-home/jobs/28786?lang=en-us&previousLocale=en-US",
@@ -6667,6 +6670,7 @@
    "https://careers.amd.com/careers-home/jobs/86851?lang=en-us": "Principal Cache RTL Design - CPU Team",
    "https://careers.amd.com/careers-home/jobs/86897?lang=en-us": "SOC CAD Engineer",
    "https://careers.amd.com/careers-home/jobs/87968?lang=en-us": "Lead/Staff AI/ML Validation Engineer (GPU/Runtime)",
+   "https://careers.amd.com/careers-home/jobs/89497?lang=en-us": "AI Framework Engineer",
    "https://careers.amd.com/careers-home/jobs/89557?lang=en-us": "Spring/Summer 2027 Masters AI Rack & Cluster Thermal Engineering Co-Op",
    "https://careers.amd.com/careers-home/jobs/89564?lang=en-us": "Spring/Summer 2027 Masters AI Rack/Cluster Design Engineering Co-Op",
    "https://careers.amd.com/careers-home/jobs/89816?lang=en-us": "Spring/Summer 2027 Masters Server Power Management Engineering Co-Op",
@@ -6755,6 +6759,7 @@
    "https://global-external-amd.icims.com/jobs/103057/login": "Silicon Design Engineer - Analog IO",
    "https://global-external-amd.icims.com/jobs/86851/login": "Principal Cache RTL Design - CPU Team",
    "https://global-external-amd.icims.com/jobs/87968/login": "Lead/Staff AI/ML Validation Engineer (GPU/Runtime)",
+   "https://global-external-amd.icims.com/jobs/89497/login": "AI Framework Engineer",
    "https://global-external-amd.icims.com/jobs/90935/login": "Component Sales Account Manager",
    "https://global-external-amd.icims.com/jobs/91465/login": "DFT Engineer (ATPG & Scan Insertion)",
    "https://global-external-amd.icims.com/jobs/92515/login": "Physical Design Lead with STA",
@@ -11258,7 +11263,8 @@
    "https://careers.qualcomm.com/careers/job/446722354020": "Senior System/SoC Architect \u2013 Display",
    "https://careers.qualcomm.com/careers/job/446722355698": "RISCV CPU Architect (SW position) \u2013 Performance Modeling - Hod Hasharon",
    "https://careers.qualcomm.com/careers/job/446722356101": "Senior Physical Design Engineer, Power Management ASICs",
-   "https://careers.qualcomm.com/careers/job/446722362956": "Back End CAD Engineer, Sr Staff"
+   "https://careers.qualcomm.com/careers/job/446722362956": "Back End CAD Engineer, Sr Staff",
+   "https://careers.qualcomm.com/careers/job/446722366373": "HW RF Board Designer - Haifa"
   },
   "Rivian": {
    "https://careers.rivian.com/careers-home/jobs/28786?lang=en-us&previousLocale=en-US": "Sr. Cybersecurity Engineer",
