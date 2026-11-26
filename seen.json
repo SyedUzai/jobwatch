@@ -556,6 +556,7 @@
    "10612757",
    "10612795",
    "10613031",
+   "10614460",
    "3168925"
   ],
   "Apple": [
@@ -1920,6 +1921,7 @@
    "/job/US-California-Santa-Clara/Senior-Sales-Operations-Analyst_JR0288997",
    "/job/US-California-Santa-Clara/Senior-Sales-Operations-Analyst_JR0289577",
    "/job/US-California-Santa-Clara/Senior-Software-Engineer_JR0289456-1",
+   "/job/US-California-Santa-Clara/Silicon-Packaging-Architect_JR0289594",
    "/job/US-California-Santa-Clara/Silicon-Photonics-Test-Engineer_JR0286967",
    "/job/US-California-Santa-Clara/Silicon-SoC-Architect_JR0285654",
    "/job/US-California-Santa-Clara/Software-Engineer---Datacenter_JR0288917",
@@ -3189,6 +3191,7 @@
    "893394980530",
    "893394985198",
    "893395016029",
+   "893395016058",
    "893395023476",
    "893395023478",
    "893395026193",
@@ -6794,6 +6797,7 @@
    "10612757": "Sr. PCIe and Interconnect Fabric Validation Engineer, Post-Silicon Validation, Annapurna Labs",
    "10612795": "Embedded Software Engineer, Annapurna Ml Software",
    "10613031": "MLA Design Verification Engineer, Annapurna Labs, Annapurna Labs ML Accelerator",
+   "10614460": "FPGA Engineer, LEO Payload FPGA ",
    "3168925": "Senior Power and Performance Architect, Annapurna Labs, Machine Learning Hardware"
   },
   "Apple": {
@@ -7989,6 +7993,7 @@
    "/job/US-California-Santa-Clara/Senior-Sales-Operations-Analyst_JR0288997": "Senior Sales Operations Analyst",
    "/job/US-California-Santa-Clara/Senior-Sales-Operations-Analyst_JR0289577": "Senior Sales Operations Analyst",
    "/job/US-California-Santa-Clara/Senior-Software-Engineer_JR0289456-1": "Senior Software Engineer",
+   "/job/US-California-Santa-Clara/Silicon-Packaging-Architect_JR0289594": "Silicon Packaging Architect",
    "/job/US-California-Santa-Clara/Silicon-Photonics-Test-Engineer_JR0286967": "Silicon Photonics Test Engineer",
    "/job/US-California-Santa-Clara/Silicon-SoC-Architect_JR0285654": "Silicon SoC Architect",
    "/job/US-Colorado-Fort-Collins/Design-Verification-Intern-2027_JR0287637": "Design Verification Intern 2027",
@@ -9118,6 +9123,7 @@
    "893394980530": "Senior Research Engineer - AI Coding Tools",
    "893394985198": "Senior LLVM Compiler Engineer",
    "893395016029": "Power Methodology and Modeling Engineer - New College Grad 2026",
+   "893395016058": "Senior AI Frameworks Engineer",
    "893395023476": "Senior Mixed Signal Design Engineer",
    "893395026193": "Senior Developer Relations Manager, Capital Markets",
    "893395030629": "Senior NPI Program Manager",
