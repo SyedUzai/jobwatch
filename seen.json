@@ -801,7 +801,8 @@
    "https://jobs.apple.com/en-us/details/200696740-0215/internship-multilingual-multimodal-understanding-and-generation-global-siri?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200696800-0215/internship-agentic-data-generation-for-high-fidelity-personal-data-global-siri?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200696837-6482/account-executive-consumer-reseller-channel?team=SLDEV",
-   "https://jobs.apple.com/en-us/details/200696846-2248/advanced-manufacturing-engineer-core-tech?team=OPMFG"
+   "https://jobs.apple.com/en-us/details/200696846-2248/advanced-manufacturing-engineer-core-tech?team=OPMFG",
+   "https://jobs.apple.com/en-us/details/200696858-1052/machine-learning-engineer-experimentation?team=SFTWR"
   ],
   "Arm": [
    "https://careers.arm.com/job/austin/memory-controller-performance-architect/33099/100445444208",
@@ -5179,7 +5180,8 @@
    "https://careers.qualcomm.com/careers/job/446722336740",
    "https://careers.qualcomm.com/careers/job/446722345319",
    "https://careers.qualcomm.com/careers/job/446722354020",
-   "https://careers.qualcomm.com/careers/job/446722356101"
+   "https://careers.qualcomm.com/careers/job/446722356101",
+   "https://careers.qualcomm.com/careers/job/446722362956"
   ],
   "Rivian": [
    "https://careers.rivian.com/careers-home/jobs/28786?lang=en-us&previousLocale=en-US",
@@ -7068,7 +7070,8 @@
    "https://jobs.apple.com/en-us/details/200696740-0215/internship-multilingual-multimodal-understanding-and-generation-global-siri?team=SFTWR": "Internship - Multilingual & Multimodal Understanding and Generation, Global Siri",
    "https://jobs.apple.com/en-us/details/200696800-0215/internship-agentic-data-generation-for-high-fidelity-personal-data-global-siri?team=SFTWR": "Internship - Agentic Data Generation for High-Fidelity Personal Data, Global Siri",
    "https://jobs.apple.com/en-us/details/200696837-6482/account-executive-consumer-reseller-channel?team=SLDEV": "Account Executive \u2013 Consumer Reseller Channel",
-   "https://jobs.apple.com/en-us/details/200696846-2248/advanced-manufacturing-engineer-core-tech?team=OPMFG": "Advanced Manufacturing Engineer, Core Tech"
+   "https://jobs.apple.com/en-us/details/200696846-2248/advanced-manufacturing-engineer-core-tech?team=OPMFG": "Advanced Manufacturing Engineer, Core Tech",
+   "https://jobs.apple.com/en-us/details/200696858-1052/machine-learning-engineer-experimentation?team=SFTWR": "Machine Learning Engineer - Experimentation"
   },
   "Arm": {
    "https://careers.arm.com/job/austin/memory-controller-performance-architect/33099/100445444208": "Memory Controller Performance Architect",
@@ -11059,7 +11062,8 @@
    "https://careers.qualcomm.com/careers/job/446722336740": "AI/ML Application Software Engineer, Senior",
    "https://careers.qualcomm.com/careers/job/446722345319": "Senior UX Engineer / UI Designer",
    "https://careers.qualcomm.com/careers/job/446722354020": "Senior System/SoC Architect \u2013 Display",
-   "https://careers.qualcomm.com/careers/job/446722356101": "Senior Physical Design Engineer, Power Management ASICs"
+   "https://careers.qualcomm.com/careers/job/446722356101": "Senior Physical Design Engineer, Power Management ASICs",
+   "https://careers.qualcomm.com/careers/job/446722362956": "Back End CAD Engineer, Sr Staff"
   },
   "Rivian": {
    "https://careers.rivian.com/careers-home/jobs/28786?lang=en-us&previousLocale=en-US": "Sr. Cybersecurity Engineer",
