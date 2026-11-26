@@ -3974,6 +3974,8 @@
    "893398957544",
    "893398957613",
    "893398972095",
+   "893398976131",
+   "893398976156",
    "https://jobs.nvidia.com/careers/job/893391504263",
    "https://jobs.nvidia.com/careers/job/893392262739",
    "https://jobs.nvidia.com/careers/job/893392589950",
@@ -5505,7 +5507,10 @@
    "https://careers.qualcomm.com/careers/job/446722367711",
    "https://careers.qualcomm.com/careers/job/446722375318",
    "https://careers.qualcomm.com/careers/job/446722376086",
-   "https://careers.qualcomm.com/careers/job/446722376856"
+   "https://careers.qualcomm.com/careers/job/446722376856",
+   "https://careers.qualcomm.com/careers/job/446722377376",
+   "https://careers.qualcomm.com/careers/job/446722377379",
+   "https://careers.qualcomm.com/careers/job/446722377380"
   ],
   "Rivian": [
    "https://careers.rivian.com/careers-home/jobs/28786?lang=en-us&previousLocale=en-US",
@@ -10287,6 +10292,8 @@
    "893398957544": "Senior Manager, Silicon Bring-Up and Productization",
    "893398957613": "Senior System Software Engineer - AV Platform",
    "893398972095": "AI Infrastructure Engineer - NVIS",
+   "893398976131": "Senior Test Engineer",
+   "893398976156": "Local Product Engineer",
    "https://jobs.nvidia.com/careers/job/893391504263": "Power Architecture Engineer",
    "https://jobs.nvidia.com/careers/job/893392262739": "Senior PCB Design Layout Engineer",
    "https://jobs.nvidia.com/careers/job/893392589950": "Power Architecture Engineer",
@@ -11735,7 +11742,10 @@
    "https://careers.qualcomm.com/careers/job/446722367711": "Camera SW Architect (lead)",
    "https://careers.qualcomm.com/careers/job/446722375318": "DFT Engineer",
    "https://careers.qualcomm.com/careers/job/446722376086": "DFT Engineer",
-   "https://careers.qualcomm.com/careers/job/446722376856": "DFT Engineer"
+   "https://careers.qualcomm.com/careers/job/446722376856": "DFT Engineer",
+   "https://careers.qualcomm.com/careers/job/446722377376": "DFT Engineer",
+   "https://careers.qualcomm.com/careers/job/446722377379": "DFT Engineer",
+   "https://careers.qualcomm.com/careers/job/446722377380": "DFT Engineer"
   },
   "Rivian": {
    "https://careers.rivian.com/careers-home/jobs/28786?lang=en-us&previousLocale=en-US": "Sr. Cybersecurity Engineer",
