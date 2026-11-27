@@ -1,5 +1,6 @@
 {
  "failures": {
+  "Apple": 1,
   "SambaNova": 6,
   "Tesla": 6
  },
@@ -3706,6 +3707,7 @@
    "893397444097",
    "893397444115",
    "893397444130",
+   "893397462910",
    "893397487444",
    "893397488368",
    "893397489936",
@@ -10237,6 +10239,7 @@
    "893397444097": "Senior Electrical Product Engineer - Datacenter",
    "893397444115": "System Level Product Development Engineer",
    "893397444130": "Senior NPI Program Manager",
+   "893397462910": "Senior DevOps Engineer",
    "893397487444": "Senior Software Engineer - Distributed Systems Engineer, EDA Infrastructure",
    "893397488368": "ASIC Floorplan Design Engineer - New College Grad 2026",
    "893397489936": "Developer Relations Manager - Edge AI and Robotics",
