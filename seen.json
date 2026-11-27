@@ -792,10 +792,12 @@
    "https://jobs.apple.com/en-us/details/200696260-0836/camera-module-design-engineer?team=HRDWR",
    "https://jobs.apple.com/en-us/details/200696260-3543/camera-module-design-engineer?team=HRDWR",
    "https://jobs.apple.com/en-us/details/200696308-2605/senior-graphics-software-engineer-vision-products-software?team=SFTWR",
+   "https://jobs.apple.com/en-us/details/200696327-0836/battery-npi-engineering-program-manager?team=HRDWR",
    "https://jobs.apple.com/en-us/details/200696331-3543/wireless-intelligence-software-engineer-wireless-technologies-ecosystems?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200696334-2459/business-lead-apple-podcasts-ad-platform-partnerships?team=MKTG",
    "https://jobs.apple.com/en-us/details/200696355-3543/ios-springboard-engineer-wallpapers?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200696365-0836/software-engineer-photos-qa-tools?team=SFTWR",
+   "https://jobs.apple.com/en-us/details/200696376-0836/engineering-project-specialist-battery?team=HRDWR",
    "https://jobs.apple.com/en-us/details/200696378-0670/creative-assistant-apple-tv?team=MKTG",
    "https://jobs.apple.com/en-us/details/200696384-3956/ar-vr-software-engineer-siri-and-visual-intelligence-vision-products-software?team=MLAI",
    "https://jobs.apple.com/en-us/details/200696385-0836/demo-strategy-operations-program-manager?team=SLDEV",
@@ -3169,7 +3171,8 @@
    "https://apply.careers.microsoft.com/careers/job/1970393557090579",
    "https://apply.careers.microsoft.com/careers/job/1970393557090816",
    "https://apply.careers.microsoft.com/careers/job/1970393557095745",
-   "https://apply.careers.microsoft.com/careers/job/1970393557095749"
+   "https://apply.careers.microsoft.com/careers/job/1970393557095749",
+   "https://apply.careers.microsoft.com/careers/job/1970393557106187"
   ],
   "Nvidia": [
    "893375056870",
@@ -7430,10 +7433,12 @@
    "https://jobs.apple.com/en-us/details/200696259-3543/camera-module-design-lead?team=HRDWR": "Camera Module Design Lead",
    "https://jobs.apple.com/en-us/details/200696260-0836/camera-module-design-engineer?team=HRDWR": "Camera Module Design Engineer",
    "https://jobs.apple.com/en-us/details/200696260-3543/camera-module-design-engineer?team=HRDWR": "Camera Module Design Engineer",
+   "https://jobs.apple.com/en-us/details/200696327-0836/battery-npi-engineering-program-manager?team=HRDWR": "Battery NPI - Engineering Program Manager",
    "https://jobs.apple.com/en-us/details/200696331-3543/wireless-intelligence-software-engineer-wireless-technologies-ecosystems?team=SFTWR": "Wireless Intelligence Software Engineer, Wireless Technologies & Ecosystems",
    "https://jobs.apple.com/en-us/details/200696334-2459/business-lead-apple-podcasts-ad-platform-partnerships?team=MKTG": "Business Lead, Apple Podcasts Ad Platform Partnerships",
    "https://jobs.apple.com/en-us/details/200696355-3543/ios-springboard-engineer-wallpapers?team=SFTWR": "IOS SPRINGBOARD ENGINEER- WALLPAPERS",
    "https://jobs.apple.com/en-us/details/200696365-0836/software-engineer-photos-qa-tools?team=SFTWR": "Software Engineer, Photos QA Tools",
+   "https://jobs.apple.com/en-us/details/200696376-0836/engineering-project-specialist-battery?team=HRDWR": "Engineering Project Specialist - Battery",
    "https://jobs.apple.com/en-us/details/200696384-3956/ar-vr-software-engineer-siri-and-visual-intelligence-vision-products-software?team=MLAI": "AR/VR Software Engineer, Siri and Visual Intelligence - Vision Products Software",
    "https://jobs.apple.com/en-us/details/200696388-0836/iphone-analog-design-engineer?team=HRDWR": "iPhone Analog Design Engineer",
    "https://jobs.apple.com/en-us/details/200696395-3543/corporate-recruiter?team=CORSV": "Corporate Recruiter",
@@ -9521,7 +9526,8 @@
    "https://apply.careers.microsoft.com/careers/job/1970393557090579": "Senior Software Engineer",
    "https://apply.careers.microsoft.com/careers/job/1970393557090816": "Senior Software Engineer",
    "https://apply.careers.microsoft.com/careers/job/1970393557095745": "Senior Data Engineer",
-   "https://apply.careers.microsoft.com/careers/job/1970393557095749": "Senior Cloud Solution Architect (Cloud & AI)"
+   "https://apply.careers.microsoft.com/careers/job/1970393557095749": "Senior Cloud Solution Architect (Cloud & AI)",
+   "https://apply.careers.microsoft.com/careers/job/1970393557106187": "Security Sales Specialist"
   },
   "Nvidia": {
    "893375056870": "Software Engineering Manager - GPU Communications Libraries",
