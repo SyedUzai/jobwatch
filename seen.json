@@ -1,10 +1,10 @@
 {
  "failures": {
-  "Broadcom": 4,
-  "Intel": 3,
-  "Marvell": 4,
+  "Broadcom": 3,
+  "Intel": 2,
+  "Marvell": 3,
   "SambaNova": 6,
-  "Samsung": 3,
+  "Samsung": 2,
   "Tesla": 6
  },
  "filters": {
@@ -868,7 +868,8 @@
    "https://jobs.apple.com/en-us/details/200696858-1052/machine-learning-engineer-experimentation?team=SFTWR",
    "https://jobs.apple.com/en-us/details/200696896-1731/rf-analog-ic-design-internship-or-working-student?team=HRDWR",
    "https://jobs.apple.com/en-us/details/200696907-1731/cad-extraction-engineer-m-f-d?team=HRDWR",
-   "https://jobs.apple.com/en-us/details/200696918-3631/environment-health-and-safety-ehs-lead-apple-retail-korea?team=CORSV"
+   "https://jobs.apple.com/en-us/details/200696918-3631/environment-health-and-safety-ehs-lead-apple-retail-korea?team=CORSV",
+   "https://jobs.apple.com/en-us/details/200696942-6482/technical-product-marketing-specialist-japan?team=MKTG"
   ],
   "Arm": [
    "https://careers.arm.com/job/austin/memory-controller-performance-architect/33099/100445444208",
@@ -7750,7 +7751,8 @@
    "https://jobs.apple.com/en-us/details/200696858-1052/machine-learning-engineer-experimentation?team=SFTWR": "Machine Learning Engineer - Experimentation",
    "https://jobs.apple.com/en-us/details/200696896-1731/rf-analog-ic-design-internship-or-working-student?team=HRDWR": "RF/Analog IC design (Internship or Working Student)",
    "https://jobs.apple.com/en-us/details/200696907-1731/cad-extraction-engineer-m-f-d?team=HRDWR": "CAD Extraction Engineer (m/f/d)",
-   "https://jobs.apple.com/en-us/details/200696918-3631/environment-health-and-safety-ehs-lead-apple-retail-korea?team=CORSV": "Environment, Health and Safety (EHS) Lead, Apple Retail - Korea"
+   "https://jobs.apple.com/en-us/details/200696918-3631/environment-health-and-safety-ehs-lead-apple-retail-korea?team=CORSV": "Environment, Health and Safety (EHS) Lead, Apple Retail - Korea",
+   "https://jobs.apple.com/en-us/details/200696942-6482/technical-product-marketing-specialist-japan?team=MKTG": "Technical Product Marketing Specialist - Japan"
   },
   "Arm": {
    "https://careers.arm.com/job/austin/memory-controller-performance-architect/33099/100445444208": "Memory Controller Performance Architect",
