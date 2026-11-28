@@ -1,10 +1,10 @@
 {
  "failures": {
-  "Broadcom": 3,
-  "Intel": 2,
-  "Marvell": 3,
+  "Broadcom": 4,
+  "Intel": 3,
+  "Marvell": 4,
   "SambaNova": 6,
-  "Samsung": 2,
+  "Samsung": 3,
   "Tesla": 6
  },
  "filters": {
@@ -3035,6 +3035,7 @@
    "https://apply.careers.microsoft.com/careers/job/1970393557055713",
    "https://apply.careers.microsoft.com/careers/job/1970393557055759",
    "https://apply.careers.microsoft.com/careers/job/1970393557055765",
+   "https://apply.careers.microsoft.com/careers/job/1970393557055768",
    "https://apply.careers.microsoft.com/careers/job/1970393557055772",
    "https://apply.careers.microsoft.com/careers/job/1970393557055776",
    "https://apply.careers.microsoft.com/careers/job/1970393557055780",
@@ -9666,6 +9667,7 @@
    "https://apply.careers.microsoft.com/careers/job/1970393557055713": "Software Engineer II- Copilot, Agents and Platforms",
    "https://apply.careers.microsoft.com/careers/job/1970393557055759": "Datacenter Project Manager- Circular Center",
    "https://apply.careers.microsoft.com/careers/job/1970393557055765": "Critical Environment Operations Director",
+   "https://apply.careers.microsoft.com/careers/job/1970393557055768": "Critical Environment Operations Manager",
    "https://apply.careers.microsoft.com/careers/job/1970393557055772": "Principal Technical Program Manager",
    "https://apply.careers.microsoft.com/careers/job/1970393557055776": "Senior Technical Program Manager",
    "https://apply.careers.microsoft.com/careers/job/1970393557055912": "Software Engineer II & Senior Software Engineer - AI Training Systems (CoreAI)",
@@ -13531,8 +13533,10 @@
  "version": 2,
  "warned": {
   "Broadcom": true,
+  "Intel": true,
   "Marvell": true,
   "SambaNova": true,
+  "Samsung": true,
   "Tesla": true
  }
 }
