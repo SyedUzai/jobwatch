@@ -1,7 +1,5 @@
 {
  "failures": {
-  "Broadcom": 1,
-  "Marvell": 1,
   "SambaNova": 6,
   "Tesla": 6
  },
@@ -2154,6 +2152,7 @@
    "/job/US-Oregon-Hillsboro/Intel-Foundry-Module-Equipment-Engineer---Dielectrics_JR0289262",
    "/job/US-Oregon-Hillsboro/Intel-Foundry-Product-Yield-Development-Engineer_JR0288698",
    "/job/US-Oregon-Hillsboro/Intel-Foundry-Senior-Epitaxy-Process-Development-Engineer_JR0289472-1",
+   "/job/US-Oregon-Hillsboro/Materials-Program-Manager--Contract-_JR0287763",
    "/job/US-Oregon-Hillsboro/Mechanical-or-Electrical-Tool-Install-Engineer_JR0289188",
    "/job/US-Oregon-Hillsboro/Module-Development-Engineer_JR0286991",
    "/job/US-Oregon-Hillsboro/Module-Development-Engineer_JR0289030",
@@ -8885,6 +8884,7 @@
    "/job/US-Oregon-Hillsboro/Intel-Foundry-LTD-Product-Yield-Development-Engineer_JR0288572": "Intel Foundry LTD Product Yield Development Engineer",
    "/job/US-Oregon-Hillsboro/Intel-Foundry-Module-Equipment-Engineer---Dielectrics_JR0289262": "Intel Foundry Module Equipment Engineer - Dielectrics",
    "/job/US-Oregon-Hillsboro/Intel-Foundry-Senior-Epitaxy-Process-Development-Engineer_JR0289472-1": "Intel Foundry Senior Epitaxy Process Development Engineer",
+   "/job/US-Oregon-Hillsboro/Materials-Program-Manager--Contract-_JR0287763": "Materials Program Manager (Contract)",
    "/job/US-Oregon-Hillsboro/Mechanical-or-Electrical-Tool-Install-Engineer_JR0289188": "Mechanical or Electrical Tool Install Engineer",
    "/job/US-Oregon-Hillsboro/Module-Development-Engineer_JR0289030": "Module Development Engineer",
    "/job/US-Oregon-Hillsboro/Module-Engineer-PhD-Intern-New-2027_JR0287951": "Module Engineer PhD Intern New 2027",
@@ -13532,8 +13532,6 @@
  },
  "version": 2,
  "warned": {
-  "Broadcom": true,
-  "Marvell": true,
   "SambaNova": true,
   "Tesla": true
  }
