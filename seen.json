@@ -1,10 +1,10 @@
 {
  "failures": {
-  "Broadcom": 2,
-  "Intel": 1,
-  "Marvell": 2,
+  "Broadcom": 3,
+  "Intel": 2,
+  "Marvell": 3,
   "SambaNova": 6,
-  "Samsung": 1,
+  "Samsung": 2,
   "Tesla": 6
  },
  "filters": {
@@ -13530,6 +13530,8 @@
  },
  "version": 2,
  "warned": {
+  "Broadcom": true,
+  "Marvell": true,
   "SambaNova": true,
   "Tesla": true
  }
