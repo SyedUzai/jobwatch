@@ -1,8 +1,10 @@
 {
  "failures": {
-  "Broadcom": 1,
-  "Marvell": 1,
+  "Broadcom": 2,
+  "Intel": 1,
+  "Marvell": 2,
   "SambaNova": 6,
+  "Samsung": 1,
   "Tesla": 6
  },
  "filters": {
